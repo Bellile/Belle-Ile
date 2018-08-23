@@ -33,7 +33,7 @@ public class CategorieController {
 		//Récupération de la liste des catégories
 		List<Categorie> list = catService.searchAllCat();
 		
-		return new ModelAndView("affCat", "listeCat", list);
+		return new ModelAndView("adminListeCat", "listeCat", list);
 	}
 	
 	//----Methode pour ajouter une categorie
@@ -42,7 +42,7 @@ public class CategorieController {
 		//Specification du model
 		model.addAttribute("catAjout", new Categorie());
 		
-		return "ajoutCat";
+		return "adminAjoutCat";
 	}
 	@RequestMapping(value="/addCat", method=RequestMethod.POST)
 	public String ajoutCat(@ModelAttribute("catAjout")Categorie cat, RedirectAttributes rda) {
@@ -55,4 +55,7 @@ public class CategorieController {
 			return "redirect:showAddCat";
 		}
 	}
+	
+	//----Methode pour supprimer une categorie
+	public 
 }

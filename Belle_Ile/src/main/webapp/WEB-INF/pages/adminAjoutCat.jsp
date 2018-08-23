@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,21 +16,25 @@
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
-<title>Liste Categories</title>
+</head>
+<title>Liste des Catégories</title>
 </head>
 <body>
-<table class="table table-bordered">
-	<tr>
-		<th>Océan</th>
-		<th>Operation</th>
-	</tr>
-	<c:forEach var="cat" items="${listeCat}">
-		<tr>
-			<td>${cat.ocean}</td>
-			<td><a href='<c:url value="?pId=${cat.id_cat}"></c:url>'>Modifier</a> 
-			| <a href='<c:url value="${cat.id_cat}"></c:url>'>Supprimer</a></td>
-		</tr>
-	</c:forEach>
-</table>	
+<form:form cssClass="form-horizontal" method="POST" action="addCat"
+		modelAttribute="catAjout">
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="ocean">Océan</form:label>
+			<div class="col-sm-10">
+				<form:input cssClass="form-control" placeholder="Ocean" path="ocean" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">ADD</button>
+			</div>
+		</div>
+	</form:form>
+	<h1 >${msg}</h1>
+
 </body>
 </html>
