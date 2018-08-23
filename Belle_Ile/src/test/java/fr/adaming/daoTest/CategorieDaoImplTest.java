@@ -31,7 +31,7 @@ public class CategorieDaoImplTest {
 	
 	//-----Test de la méthode searchAllCat
 	//Test par rapport à la longueur de la liste
-	
+	@Test
 	@Ignore
 	@Transactional(readOnly=true)
 	public void testSearchAllCatSize() {
@@ -40,7 +40,7 @@ public class CategorieDaoImplTest {
 	}
 	
 	//Test par rapport au premier objet de la liste
-	
+	@Test
 	@Ignore
 	@Transactional(readOnly=true)
 	public void testSearchAllCatFirst() {
@@ -50,7 +50,7 @@ public class CategorieDaoImplTest {
 	
 	//-----Test de la méthode searchByIdCat
 	//Test par rapport à une valeur
-	
+	@Test
 	@Ignore
 	@Transactional(readOnly=true)
 	public void testSearchByIdCat() {
@@ -63,7 +63,7 @@ public class CategorieDaoImplTest {
 	
 	//-----Test de la méthode addCat
 	//Test par rapport à la longueur de liste
-	
+	@Test
 	@Ignore
 	@Transactional
 	public void testAddCat() {
@@ -77,7 +77,7 @@ public class CategorieDaoImplTest {
 	
 	//-----Test de la méthode deleteCat
 	//Test par rapport à la longueur de liste
-	
+	@Test
 	@Ignore
 	@Transactional
 	public void testDeleteCat() {
@@ -92,7 +92,7 @@ public class CategorieDaoImplTest {
 	
 	//-----Test de méthode updateCat
 	//Par rapport à l'ocean
-	
+	@Test
 	@Ignore
 	@Transactional
 	public void testUpdateCat() {

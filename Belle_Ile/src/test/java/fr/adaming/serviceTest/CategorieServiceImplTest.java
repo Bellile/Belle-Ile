@@ -29,7 +29,7 @@ public class CategorieServiceImplTest {
 
 	// -----Test de la méthode searchAllCat
 	// Test par rapport à la longueur de la liste
-	// @Test
+	@Test
 	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchAllCatSize() {
@@ -38,7 +38,7 @@ public class CategorieServiceImplTest {
 	}
 
 	// Test par rapport au premier objet de la liste
-	// @Test
+	@Test
 	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchAllCatFirst() {
@@ -48,7 +48,7 @@ public class CategorieServiceImplTest {
 
 	// -----Test de la méthode searchByIdCat
 	// Test par rapport à une valeur
-	// @Test
+	@Test
 	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchByIdCat() {
@@ -61,7 +61,7 @@ public class CategorieServiceImplTest {
 
 	// -----Test de la méthode addCat
 	// Test par rapport à la longueur de liste
-	// @Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testAddCat() {
@@ -75,7 +75,7 @@ public class CategorieServiceImplTest {
 
 	// -----Test de la méthode deleteCat
 	// Test par rapport à la longueur de liste
-	// @Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testDeleteCat() {
@@ -90,7 +90,7 @@ public class CategorieServiceImplTest {
 
 	// -----Test de méthode updateCat
 	// Par rapport à l'ocean
-	// @Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testUpdateCat() {

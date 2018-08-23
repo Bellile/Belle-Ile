@@ -31,7 +31,7 @@ public class LocationVoitureDaoImplTest {
 	}
 
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	@Rollback(true)
@@ -45,7 +45,7 @@ public class LocationVoitureDaoImplTest {
 	}
 	
 	
-	//@Test
+	@Test
 	@Ignore
 	@Transactional(readOnly=true)
 	public void testSerchAll(){
@@ -53,7 +53,7 @@ public class LocationVoitureDaoImplTest {
 		
 	}
 	
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	@Rollback(true)
@@ -65,7 +65,7 @@ public class LocationVoitureDaoImplTest {
 				
 	}
 	
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testDelete(){
@@ -79,7 +79,7 @@ public class LocationVoitureDaoImplTest {
 	
 	
 	
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testGetById(){

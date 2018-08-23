@@ -33,7 +33,7 @@ public class LocationVoitureServiceImplTest {
 		this.lcService = locationService;
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	@Rollback(true)
@@ -46,7 +46,7 @@ public class LocationVoitureServiceImplTest {
 
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional(readOnly = true)
 	public void testSerchAll() {
@@ -54,7 +54,7 @@ public class LocationVoitureServiceImplTest {
 
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	@Rollback(true)
@@ -66,7 +66,7 @@ public class LocationVoitureServiceImplTest {
 
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testDelete() {
@@ -78,7 +78,7 @@ public class LocationVoitureServiceImplTest {
 
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testGetById() {

@@ -52,7 +52,7 @@ public class VolServiceImplTest {
 	/**
 	 * Vérifie la taille de la liste
 	 */
-	//@Test
+	@Test
 	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchAllVolSizeListe() {
@@ -65,7 +65,7 @@ public class VolServiceImplTest {
 	/**
 	 * vérifie la valeur de l'attribut depart du premier element de la liste
 	 */
-	//@Test
+	@Test
 	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchAllVolFirst() {
@@ -75,7 +75,7 @@ public class VolServiceImplTest {
 		assertEquals("Taiti", liste.get(0).getArrivee());
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchVolByIdValDepart() {
@@ -88,7 +88,7 @@ public class VolServiceImplTest {
 		assertEquals("Taiti", volOut.getArrivee());
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testAddVolSizeListe() {
@@ -100,7 +100,7 @@ public class VolServiceImplTest {
 		assertEquals(3, volService.searchAllVol().size());
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testDeleteVolSizeListe() {
@@ -113,7 +113,7 @@ public class VolServiceImplTest {
 		assertEquals(1, volService.searchAllVol().size());
 	}
 
-	//@Test
+	@Test
 	@Ignore
 	@Transactional
 	public void testUpdateVolValDepart() {
