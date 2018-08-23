@@ -7,20 +7,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title> </title>
+<title> Liste des vols</title>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/bootsrap.css" />
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
 
-<%@ include file="" %>
 
+
+
+<table class="table">
+	<tr>
+		<th>Lieu de départ</th>
+		<th>Date</th>
+		<th>Lieu d'arrivée</th>
+		<th>Date</th>
+	</tr>
+	
+	<c:forEach var="vol" items="${listeVol}">
+		<tr>
+			<td>${vol.depart}</td>
+			<td><fmt:formatDate value="${vol.dDepart}" pattern="dd/MM/yyyy HH:mm"/></td>
+			<td>${vol.arrivee}</td>
+			<td><fmt:formatDate value="${vol.dArrivee}" pattern="dd/MM/yyyy HH:mm"/></td>
+		</tr>
+	</c:forEach>
+</table>
 
 
 
