@@ -3,12 +3,15 @@
  */
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,7 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="vols")
-public class Vol {
+public class Vol implements Serializable{
 
 	//Attributs
 	/*
@@ -27,6 +30,7 @@ public class Vol {
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_vol")
 	private int id_vol;
 	/*
 	 * Nom de l'aéroport de départ du vol
@@ -44,6 +48,13 @@ public class Vol {
 	 * Date d'arrivee a destination
 	 */
 	private Date dArrivee;
+	
+	//Association UML en JAVA
+	/*
+	 * Association avec la classe offre
+	 */
+	@OneToOne
+	private Offre offre;
 	
 	//Constructeur
 	/*
@@ -115,5 +126,14 @@ public class Vol {
 	
 	public void setdArrivee(Date dArrivee) {
 		this.dArrivee = dArrivee;
+	}
+
+	public Offre getOffre() {
+		return offre;
+	}
+
+	public void setOffre(Offre offre) {
+		this.offre = offre;
 	}	
+	
 }

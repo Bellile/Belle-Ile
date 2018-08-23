@@ -3,10 +3,15 @@
  */
 package fr.adaming.model;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,7 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="categories")
-public class Categorie {
+public class Categorie implements Serializable {
 
 	//Attributs
 	/*
@@ -25,6 +30,7 @@ public class Categorie {
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_cat")
 	private int id_cat;
 	
 	/*
@@ -32,6 +38,13 @@ public class Categorie {
 	 */
 	private String ocean;
 
+	//Association UML en JAVA
+	/*
+	 * Association avec la classe Hotel
+	 */
+	@OneToMany(mappedBy="categorie")
+	private List<Hotel> listeHotel;
+	
 	//Constructeur
 	/*
 	 * Un constructeur permettant d'instancier des objets "categorie" vides
@@ -72,6 +85,14 @@ public class Categorie {
 
 	public void setOcean(String ocean) {
 		this.ocean = ocean;
+	}
+
+	public List<Hotel> getListeHotel() {
+		return listeHotel;
+	}
+
+	public void setListeHotel(List<Hotel> listeHotel) {
+		this.listeHotel = listeHotel;
 	}
 	
 	

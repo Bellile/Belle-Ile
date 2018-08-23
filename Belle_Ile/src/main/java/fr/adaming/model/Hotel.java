@@ -4,11 +4,18 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,6 +33,7 @@ public class Hotel implements Serializable{
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_hotel")
 	private int id_hotel;
 	
 	/*
@@ -42,6 +50,32 @@ public class Hotel implements Serializable{
 	 */
 	private boolean plage;
 	
+	/**
+	 * 
+	 * @Lob permet de confirmer que la photo est une blob dans la base SQL
+	 */
+	@Lob
+	private byte[] photo;
+	
+	//Association UML en JAVA
+	/*
+	 * Association avec la classe adresse
+	 */
+	@Embedded
+	private Adresse adresse;
+	
+	/*
+	 * Association avec la classe offre
+	 */
+	@OneToMany(mappedBy="hotel")
+	private List<Offre> listeOffre;
+	
+	/*
+	 * Association avec la classe offre
+	 */
+	@ManyToOne
+	@JoinColumn(name="cat_id", referencedColumnName="id_cat")
+	private Categorie categorie;
 	//Constructeur
 	/*
 	 * Un constructeur permettant d'instancier des objets "hotel" vides
@@ -52,21 +86,24 @@ public class Hotel implements Serializable{
 	/*
 	 * Un constructeur sans le paramètre id pour instancier un objet hotel et l'ajouter à la base de données
 	 */
-	public Hotel(String prestation, boolean piscine, boolean plage) {
+	public Hotel(String prestation, boolean piscine, boolean plage, byte[] photo) {
 		super();
 		this.prestation = prestation;
 		this.piscine = piscine;
 		this.plage = plage;
+		this.photo = photo;
 	}
+	
 	/*
 	 * Un constructeur complet pour instancier un objet hotel récupérer depuis la base de données
 	 */
-	public Hotel(int id_hotel, String prestation, boolean piscine, boolean plage) {
+	public Hotel(int id_hotel, String prestation, boolean piscine, boolean plage, byte[] photo) {
 		super();
 		this.id_hotel = id_hotel;
 		this.prestation = prestation;
 		this.piscine = piscine;
 		this.plage = plage;
+		this.photo = photo;
 	}
 	
 	//Getter/Setter
@@ -74,6 +111,7 @@ public class Hotel implements Serializable{
 		return id_hotel;
 	}
 	
+
 	public void setId_hotel(int id_hotel) {
 		this.id_hotel = id_hotel;
 	}
@@ -102,4 +140,36 @@ public class Hotel implements Serializable{
 		this.plage = plage;
 	}
 	
+	public byte[] getPhoto() {
+		return photo;
+	}
+	
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+	
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
+	public List<Offre> getListeOffre() {
+		return listeOffre;
+	}
+	
+	public void setListeOffre(List<Offre> listeOffre) {
+		this.listeOffre = listeOffre;
+	}
+	
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
 }
