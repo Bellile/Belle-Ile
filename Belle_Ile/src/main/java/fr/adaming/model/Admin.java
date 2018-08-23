@@ -31,7 +31,7 @@ public class Admin implements Serializable {
 	private int id_admin;
 	private String mail;
 	private String mdp;
-	private Boolean active;
+	private boolean active;
 
 	/** Constructeur */
 
