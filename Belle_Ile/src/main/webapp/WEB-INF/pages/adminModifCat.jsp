@@ -21,8 +21,15 @@
 </head>
 <body>
 <h1 >${msg}</h1>
-<form:form cssClass="form-horizontal" method="POST" action="addCat"
-		modelAttribute="catAjout">
+<form:form cssClass="form-horizontal" method="POST" action="updCat"
+		modelAttribute="modifCat">
+		<form:label cssClass="col-sm-2 control-label" path="ocean">Id_cat</form:label>
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="id_cat">Océan</form:label>
+			<div class="col-sm-10">
+				<form:input cssClass="form-control" placeholder="Id_cat" path="id_cat" />
+			</div>
+		</div>
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="ocean">Océan</form:label>
 			<div class="col-sm-10">

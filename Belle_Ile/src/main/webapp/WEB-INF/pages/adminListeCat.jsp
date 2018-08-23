@@ -26,8 +26,8 @@
 	<c:forEach var="cat" items="${listeCat}">
 		<tr>
 			<td>${cat.ocean}</td>
-			<td><a href='<c:url value="?pId=${cat.id_cat}"></c:url>'>Modifier</a> 
-			| <a href='<c:url value="${cat.id_cat}"></c:url>'>Supprimer</a></td>
+			<td><a href='<c:url value="/admin/cat/updCatLink?pId=${cat.id_cat}"></c:url>'>Modifier</a> 
+			| <a href='<c:url value="/admin/cat/delCatLink/${cat.id_cat}"></c:url>'>Supprimer</a></td>
 		</tr>
 	</c:forEach>
 </table>	

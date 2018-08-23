@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -71,5 +72,40 @@ public class CategorieController {
 		List<Categorie> list = catService.searchAllCat();
 		
 		return new ModelAndView("adminListeCat", "listeCat", list);
+	}
+	
+	//----Methode pour modifier une categorie
+	//Afficher le formulaire pour modifier une catégorie
+	@RequestMapping(value="/showUpdCat", method=RequestMethod.GET)
+	public ModelAndView showModifCat() {
+		
+		return new ModelAndView("adminModifCat", "modifCat", new Categorie());
+	}
+	
+	//Modifier
+	@RequestMapping(value="/updCat", method=RequestMethod.POST)
+	public String modifCat(@ModelAttribute("modifCat")Categorie cat, RedirectAttributes rda) {
+		int verif = catService.updateCat(cat);
+		
+		if (verif!=0) {
+			return "redirect:listeCat";
+		} else {
+			rda.addAttribute("msg", "La modification a échoué");
+			return "redirect:showUpdCat";
+		}
+	}
+	
+	//Modifier par lien
+	@RequestMapping(value="/updCatLink")
+	public String modifCatLink(Model model, @RequestParam("pId")int id) {
+		Categorie catIn = new Categorie();
+		catIn.setId_cat(id);
+		
+		Categorie catUpd = catService.searchByIdCat(catIn);
+		
+		model.addAttribute("modifCat", catUpd);
+		
+		return "adminModifCat";
+		
 	}
 }
