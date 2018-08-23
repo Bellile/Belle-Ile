@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +17,25 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@SuppressWarnings("serial")
 @Entity
-@Table(name="accompagnants")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Accompagnant implements Serializable{
+@Table(name = "accompagnants")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Accompagnant implements Serializable {
+
+	/*
+	 * Déclaration des attribus
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name="id")
+	private int id;
+	private String nom;
+	private String prenom;
+
+	@Temporal(TemporalType.DATE)
+	private Date dn;
+	private String tel;
 
 	/*
 	 * Association uml en java
@@ -29,20 +45,8 @@ public class Accompagnant implements Serializable{
 	private Adresse adresse;
 
 	@ManyToOne
-	@JoinColumn(name="resa_id", referencedColumnName="id_resa")
+	@JoinColumn(name = "resa_id", referencedColumnName = "id_resa")
 	private Reservation reservation;
-
-	/*
-	 * Déclaration des attribus
-	 */
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String nom;
-	private String prenom;
-	@Temporal(TemporalType.DATE)
-	private Date dn;
-	private String tel;
 
 	/*
 	 * Déclaration des constructeurs
@@ -128,8 +132,5 @@ public class Accompagnant implements Serializable{
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
-	
-	
-	
 
 }

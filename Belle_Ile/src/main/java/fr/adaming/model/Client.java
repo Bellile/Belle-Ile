@@ -10,9 +10,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "clients")
 public class Client extends Accompagnant {
+
+	/** Attribut */
+
+	private String mail;
+	private String mdp;
+	private boolean active;
 
 	/** Association uml en java */
 	@OneToMany(mappedBy = "client")
@@ -22,17 +29,12 @@ public class Client extends Accompagnant {
 	@JoinColumn(name = "role_id", referencedColumnName = "id_role")
 	private Role role;
 
-	/** Attribut */
-
-	private String mail;
-	private String mdp;
-	private boolean active;
-
 	/** Constructeur */
 
 	public Client() {
 		super();
 	}
+
 
 	public Client(String nom, String prenom, Date dn, String tel, String mail, String mdp, boolean active) {
 		super(nom, prenom, dn, tel);
@@ -52,8 +54,6 @@ public class Client extends Accompagnant {
 	public String getMail() {
 		return mail;
 	}
-
-
 
 	public void setMail(String mail) {
 		this.mail = mail;
@@ -91,5 +91,4 @@ public class Client extends Accompagnant {
 		this.role = role;
 	}
 
-	
 }
