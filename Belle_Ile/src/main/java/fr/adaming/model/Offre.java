@@ -30,22 +30,18 @@ public class Offre implements Serializable {
 	private double promo;
 	@Lob
 	private byte[] photo;
-	
+
 	@OneToOne
-	@JoinColumn(name="vol_id", referencedColumnName="id_vol")
+	@JoinColumn(name = "vol_id", referencedColumnName = "id_vol")
 	private Vol vol;
 
 	@ManyToOne
-	@JoinColumn(name="hotel_id", referencedColumnName="id_hotel")
+	@JoinColumn(name = "hotel_id", referencedColumnName = "id_hotel")
 	private Hotel hotel;
-	
-	@OneToOne
-	@JoinColumn(name="location_id", referencedColumnName="id_location")
-	private LocationVoiture location;
-	
-	
-	
 
+	@OneToOne
+	@JoinColumn(name = "location_id", referencedColumnName = "id_location")
+	private LocationVoiture location;
 
 	// Constructeur
 	public Offre() {
@@ -118,6 +114,30 @@ public class Offre implements Serializable {
 
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+
+	public Vol getVol() {
+		return vol;
+	}
+
+	public void setVol(Vol vol) {
+		this.vol = vol;
+	}
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	public LocationVoiture getLocation() {
+		return location;
+	}
+
+	public void setLocation(LocationVoiture location) {
+		this.location = location;
 	}
 
 }

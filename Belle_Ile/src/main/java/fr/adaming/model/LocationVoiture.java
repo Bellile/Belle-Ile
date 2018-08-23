@@ -93,4 +93,13 @@ public class LocationVoiture implements Serializable {
 		this.photo = photo;
 	}
 
+	public Offre getOffre() {
+		return offre;
+	}
+
+	public void setOffre(Offre offre) {
+		this.offre = offre;
+	}
+
+	
 }
