@@ -28,6 +28,7 @@ public class CategorieController {
 	}
 	
 	//----Methode pour afficher une lsite des catégories
+	@RequestMapping(value="/listeCat", method=RequestMethod.GET)
 	public ModelAndView affListeCat() {
 		//Récupération de la liste des catégories
 		List<Categorie> list = catService.searchAllCat();
@@ -43,7 +44,7 @@ public class CategorieController {
 		
 		return "ajoutCat";
 	}
-	
+	@RequestMapping(value="/addCat", method=RequestMethod.POST)
 	public String ajoutCat(@ModelAttribute("catAjout")Categorie cat, RedirectAttributes rda) {
 		Categorie catOut = catService.addCat(cat);
 		
