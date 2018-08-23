@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -57,5 +58,18 @@ public class CategorieController {
 	}
 	
 	//----Methode pour supprimer une categorie
-	public 
+	@RequestMapping(value="/delCatLink/{pId}")
+	public ModelAndView suppCatLien(@PathVariable("pId")int id) {
+		//instanciation d'un objet Categorie
+		Categorie cat = new Categorie();
+		cat.setId_cat(id);
+		
+		//Appel de la méthode
+		catService.deleteCat(cat);
+		
+		//Récupération de la liste
+		List<Categorie> list = catService.searchAllCat();
+		
+		return new ModelAndView("adminListeCat", "listeCat", list);
+	}
 }
