@@ -36,7 +36,7 @@ public interface ILocationVoitureDao {
 	 * @return List LocationVoiture liste des objets de type T de la base de données
 	 */
 	
-	public List<LocationVoiture > searchAll();
+	public List<LocationVoiture > searchAllLC();
 	
 	/**<b>searchById</b>
 	 * Méthode pour récupérer un objet LocationVoiture  selon son id dans la base de données

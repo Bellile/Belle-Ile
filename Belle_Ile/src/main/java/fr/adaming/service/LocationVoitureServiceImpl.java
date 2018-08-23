@@ -48,9 +48,9 @@ public class LocationVoitureServiceImpl implements ILocationVoitureService {
 	}
 
 	@Override
-	public List<LocationVoiture> searchAll() {
+	public List<LocationVoiture> searchAllLC() {
 
-		return locationDao.searchAll();
+		return locationDao.searchAllLC();
 	}
 
 	@Override
