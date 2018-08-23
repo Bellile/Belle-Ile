@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Classe du model Vol
@@ -43,10 +45,12 @@ public class Vol implements Serializable{
 	/*
 	 * Date du décollage
 	 */
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dDepart;
 	/*
 	 * Date d'arrivee a destination
 	 */
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dArrivee;
 	
 	//Association UML en JAVA
