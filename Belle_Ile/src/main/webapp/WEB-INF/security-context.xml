@@ -20,7 +20,7 @@
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.user}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="password" value="${jdbc.mdp}" />
 	</bean>
 
 	<!-- *******1:configuration de la partie autorisation -->

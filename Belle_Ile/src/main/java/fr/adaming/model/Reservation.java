@@ -23,7 +23,7 @@ public class Reservation implements Serializable {
 	 */
 
 	@ManyToOne
-	@JoinColumn(name = "id_resa", referencedColumnName = "resa_id")
+	@JoinColumn(name = "client_id", referencedColumnName = "id")
 	private Client client;
 	
 	@OneToMany(mappedBy="reservation")

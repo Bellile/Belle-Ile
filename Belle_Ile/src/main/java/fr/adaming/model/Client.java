@@ -26,7 +26,7 @@ public class Client extends Accompagnant {
 
 	private String mail;
 	private String mdp;
-	private Boolean active;
+	private boolean active;
 
 	/** Constructeur */
 
@@ -85,4 +85,21 @@ public class Client extends Accompagnant {
 		this.listeResaClient = listeResaClient;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	
 }

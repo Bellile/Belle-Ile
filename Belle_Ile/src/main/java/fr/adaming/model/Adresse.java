@@ -6,8 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "adresse")
+
 @Embeddable
 public class Adresse implements Serializable{
 
