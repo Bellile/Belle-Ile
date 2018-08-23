@@ -22,7 +22,7 @@ public class Client extends Accompagnant {
 	@JoinColumn(name = "role_id", referencedColumnName = "id_role")
 	private Role role;
 
-	/** Attribu */
+	/** Attribut */
 
 	private String mail;
 	private String mdp;
@@ -30,40 +30,30 @@ public class Client extends Accompagnant {
 
 	/** Constructeur */
 
-	public Client(int id, String nom, String prenom, Date dn, String tel, String mail, String mdp) {
-		super(id, nom, prenom, dn, tel);
-		this.mail = mail;
-		this.mdp = mdp;
-	}
-
-	public Client(int id, String nom, String prenom, Date dn, String tel, String mail, String mdp, Boolean active) {
-		super(id, nom, prenom, dn, tel);
-		this.mail = mail;
-		this.mdp = mdp;
-		this.active = active;
-	}
-
-	public Client(String nom, String prenom, Date dn, String tel, String mail, String mdp, Boolean active) {
-		super(nom, prenom, dn, tel);
-		this.mail = mail;
-		this.mdp = mdp;
-		this.active = active;
-	}
-
 	public Client() {
 		super();
 	}
 
-	public Client(String nom, String prenom, Date dn, String tel, String mail, String mdp) {
+	public Client(String nom, String prenom, Date dn, String tel, String mail, String mdp, boolean active) {
 		super(nom, prenom, dn, tel);
 		this.mail = mail;
 		this.mdp = mdp;
+		this.active = active;
+	}
+
+	public Client(int id, String nom, String prenom, Date dn, String tel, String mail, String mdp, boolean active) {
+		super(id, nom, prenom, dn, tel);
+		this.mail = mail;
+		this.mdp = mdp;
+		this.active = active;
 	}
 
 	/** Getter setter */
 	public String getMail() {
 		return mail;
 	}
+
+
 
 	public void setMail(String mail) {
 		this.mail = mail;
