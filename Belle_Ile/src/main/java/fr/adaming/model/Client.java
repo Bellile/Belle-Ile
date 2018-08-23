@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "client")
+@Table(name = "clients")
 public class Client extends Accompagnant {
 
 	/** Association uml en java */
@@ -26,6 +26,7 @@ public class Client extends Accompagnant {
 
 	private String mail;
 	private String mdp;
+	private Boolean active;
 
 	/** Constructeur */
 
@@ -33,6 +34,20 @@ public class Client extends Accompagnant {
 		super(id, nom, prenom, dn, tel);
 		this.mail = mail;
 		this.mdp = mdp;
+	}
+
+	public Client(int id, String nom, String prenom, Date dn, String tel, String mail, String mdp, Boolean active) {
+		super(id, nom, prenom, dn, tel);
+		this.mail = mail;
+		this.mdp = mdp;
+		this.active = active;
+	}
+
+	public Client(String nom, String prenom, Date dn, String tel, String mail, String mdp, Boolean active) {
+		super(nom, prenom, dn, tel);
+		this.mail = mail;
+		this.mdp = mdp;
+		this.active = active;
 	}
 
 	public Client() {

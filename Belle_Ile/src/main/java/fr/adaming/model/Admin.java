@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "admin")
+@Table(name = "admins")
 public class Admin implements Serializable {
 
 	/*
@@ -31,6 +31,7 @@ public class Admin implements Serializable {
 	private int id_admin;
 	private String mail;
 	private String mdp;
+	private Boolean active;
 
 	/** Constructeur */
 
@@ -39,6 +40,21 @@ public class Admin implements Serializable {
 		this.id_admin = id_admin;
 		this.mail = mail;
 		this.mdp = mdp;
+	}
+
+	public Admin(String mail, String mdp, Boolean active) {
+		super();
+		this.mail = mail;
+		this.mdp = mdp;
+		this.active = active;
+	}
+
+	public Admin(int id_admin, String mail, String mdp, Boolean active) {
+		super();
+		this.id_admin = id_admin;
+		this.mail = mail;
+		this.mdp = mdp;
+		this.active = active;
 	}
 
 	public Admin(String mail, String mdp) {

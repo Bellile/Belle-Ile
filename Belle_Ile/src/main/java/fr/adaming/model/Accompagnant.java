@@ -11,9 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="accompagnant")
+@Table(name="accompagnants")
 
 public class Accompagnant implements Serializable{
 
@@ -36,6 +38,7 @@ public class Accompagnant implements Serializable{
 	private int id;
 	private String nom;
 	private String prenom;
+	@Temporal(TemporalType.DATE)
 	private Date dn;
 	private String tel;
 
