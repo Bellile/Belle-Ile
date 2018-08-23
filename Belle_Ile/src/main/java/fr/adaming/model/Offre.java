@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -21,28 +25,50 @@ public class Offre implements Serializable {
 	private int id_offre;
 
 	private int nbNuit;
-
 	private double prix;
-
 	private int nbDispo;
-
 	private double promo;
+	@Lob
+	private byte[] photo;
+	
+	@OneToOne
+	@JoinColumn(name="vol_id", referencedColumnName="id_vol")
+	private Vol vol;
+
+	@ManyToOne
+	@JoinColumn(name="hotel_id", referencedColumnName="id_hotel")
+	private Hotel hotel;
+	
+	@OneToOne
+	@JoinColumn(name="location_id", referencedColumnName="id_location")
+	private LocationVoiture location;
+	
+	
+	
+
 
 	// Constructeur
 	public Offre() {
 		super();
 	}
 
-	public Offre(int nbNuit, double prix, int nbDispo) {
+	public Offre(int nbNuit, double prix, int nbDispo, double promo, byte[] photo) {
 		super();
 		this.nbNuit = nbNuit;
 		this.prix = prix;
 		this.nbDispo = nbDispo;
+		this.promo = promo;
+		this.photo = photo;
 	}
 
-	public Offre(int id_offre) {
+	public Offre(int id_offre, int nbNuit, double prix, int nbDispo, double promo, byte[] photo) {
 		super();
 		this.id_offre = id_offre;
+		this.nbNuit = nbNuit;
+		this.prix = prix;
+		this.nbDispo = nbDispo;
+		this.promo = promo;
+		this.photo = photo;
 	}
 
 	// Getter et setter
@@ -84,6 +110,14 @@ public class Offre implements Serializable {
 
 	public void setPromo(double promo) {
 		this.promo = promo;
+	}
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
 	}
 
 }
