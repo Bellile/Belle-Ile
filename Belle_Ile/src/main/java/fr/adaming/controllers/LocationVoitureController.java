@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -75,5 +76,36 @@ public class LocationVoitureController {
 		}
 
 	}
+	
+	
+	/*
+	 * Supprimer une location de voiture
+	 */
+	
+	@RequestMapping(value="/supprLCLink/{pId}", method=RequestMethod.GET)
+	public String afficheSupprLc(ModelMap modele, @PathVariable("pId") int id){
+		
+		LocationVoiture lc = new LocationVoiture();
+		lc.setId_location(id);
+		
+		lcService.delete(lc);
+		
+		List<LocationVoiture> listLC=lcService.searchAllLC();
+		
+		modele.addAttribute("listeLC", listLC);
+		
+		return "listLC";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
