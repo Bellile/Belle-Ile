@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role implements Serializable{
 
 	/*
 	 * attribus
@@ -27,7 +28,7 @@ public class Role {
 	/*
 	 * Association uml en java
 	 */
-	@OneToMany(mappedBy="role")
+	@OneToMany(mappedBy = "role")
 	private List<Client> listeClient;
 
 	@OneToMany(mappedBy = "role")
@@ -47,12 +48,25 @@ public class Role {
 		super();
 	}
 
+	public Role(String roleName) {
+		super();
+		this.roleName = roleName;
+	}
+
 	/*
 	 * getter et setter
 	 */
 
 	public int getId_role() {
 		return id_role;
+	}
+
+	public List<Client> getListeClient() {
+		return listeClient;
+	}
+
+	public void setListeClient(List<Client> listeClient) {
+		this.listeClient = listeClient;
 	}
 
 	public void setId_role(int id_role) {
