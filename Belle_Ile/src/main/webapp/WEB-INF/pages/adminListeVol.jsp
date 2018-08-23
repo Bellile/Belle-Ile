@@ -28,6 +28,7 @@
 		<th>Date</th>
 		<th>Lieu d'arrivée</th>
 		<th>Date</th>
+		<th>Opération</th>
 	</tr>
 	
 	<c:forEach var="vol" items="${listeVol}">
@@ -36,7 +37,9 @@
 			<td><fmt:formatDate value="${vol.dDepart}" pattern="dd/MM/yyyy HH:mm"/></td>
 			<td>${vol.arrivee}</td>
 			<td><fmt:formatDate value="${vol.dArrivee}" pattern="dd/MM/yyyy HH:mm"/></td>
+			<td><a href="<c:url value="/admin/vol/deleteVol?pId=${vol.id_vol}"/>">Supprimer</a>
 		</tr>
+		
 	</c:forEach>
 </table>
 
