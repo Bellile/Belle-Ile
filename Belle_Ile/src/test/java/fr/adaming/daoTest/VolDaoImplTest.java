@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,8 @@ public class VolDaoImplTest {
 	/**
 	 * Vérifie la taille de la liste
 	 */
-	@Test
+	//@Test
+	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchAllVolSizeListe() {
 
@@ -63,7 +65,8 @@ public class VolDaoImplTest {
 	/**
 	 * vérifie la valeur de l'attribut depart du premier element de la liste
 	 */
-	@Test
+	//@Test
+	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchAllVolFirst() {
 
@@ -72,7 +75,8 @@ public class VolDaoImplTest {
 		assertEquals("Taiti", liste.get(0).getArrivee());
 	}
 
-	@Test
+	//@Test
+	@Ignore
 	@Transactional(readOnly = true)
 	public void testSearchVolByIdValDepart() {
 
@@ -84,7 +88,8 @@ public class VolDaoImplTest {
 		assertEquals("Taiti", volOut.getArrivee());
 	}
 
-	@Test
+	//@Test
+	@Ignore
 	@Transactional
 	public void testAddVolSizeListe() {
 
@@ -95,7 +100,8 @@ public class VolDaoImplTest {
 		assertEquals(3, volDao.searchAllVol().size());
 	}
 
-	@Test
+	//@Test
+	@Ignore
 	@Transactional
 	public void testDeleteVolSizeListe() {
 
@@ -107,7 +113,8 @@ public class VolDaoImplTest {
 		assertEquals(1, volDao.searchAllVol().size());
 	}
 
-	@Test
+	//@Test
+	@Ignore
 	@Transactional
 	public void testUpdateVolValDepart() {
 		Vol volIn = new Vol();

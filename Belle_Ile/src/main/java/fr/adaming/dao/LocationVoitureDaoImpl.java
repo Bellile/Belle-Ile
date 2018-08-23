@@ -77,7 +77,7 @@ public class LocationVoitureDaoImpl implements ILocationVoitureDao{
 	}
 
 	@Override
-	public List<LocationVoiture> searchAll() {
+	public List<LocationVoiture> searchAllLC() {
 		
 		Session s=sf.getCurrentSession();
 		
