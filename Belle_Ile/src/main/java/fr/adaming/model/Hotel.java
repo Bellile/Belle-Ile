@@ -17,6 +17,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Classe du model Hotel
@@ -56,6 +57,14 @@ public class Hotel implements Serializable{
 	 */
 	@Lob
 	private byte[] photo;
+	
+	/**
+	 * Attribut utilisé pour afficher l'image dans la vue
+	 * @Transient evite que l'attribut selectionne ne soit integre a la base de
+	 *            donnees.
+	 */
+	@Transient
+	private String image;
 	
 	//Association UML en JAVA
 	/*
@@ -171,5 +180,15 @@ public class Hotel implements Serializable{
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+	
+	public String getImage() {
+		return image;
+	}
+	
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+	
 
 }
