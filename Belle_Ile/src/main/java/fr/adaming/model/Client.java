@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,32 +16,30 @@ import javax.persistence.Table;
 public class Client extends Accompagnant {
 
 	/** Association uml en java */
-	@OneToMany(mappedBy = "id_resa")
+	@OneToMany(mappedBy = "client")
 	private List<Reservation> listeResaClient;
 
 	/** Attribu */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private int id_client;
+
 	private String mail;
 	private String mdp;
 
 	/** Constructeur */
-	public Client(String mail, String mdp) {
-		super();
-		this.mail = mail;
-		this.mdp = mdp;
-	}
 
-	public Client(int id_client, String mail, String mdp) {
-		super();
-		this.id_client = id_client;
+	public Client(int id, String nom, String prenom, Date dn, String tel, String mail, String mdp) {
+		super(id, nom, prenom, dn, tel);
 		this.mail = mail;
 		this.mdp = mdp;
 	}
 
 	public Client() {
 		super();
+	}
+
+	public Client(String nom, String prenom, Date dn, String tel, String mail, String mdp) {
+		super(nom, prenom, dn, tel);
+		this.mail = mail;
+		this.mdp = mdp;
 	}
 
 	/** Getter setter */
@@ -67,13 +66,10 @@ public class Client extends Accompagnant {
 	public void setListeResaClient(List<Reservation> listeResaClient) {
 		this.listeResaClient = listeResaClient;
 	}
-
-	public int getId_client() {
-		return id_client;
-	}
-
-	public void setId_client(int id_client) {
-		this.id_client = id_client;
-	}
+	
+	
+	
+	
+	
 
 }
