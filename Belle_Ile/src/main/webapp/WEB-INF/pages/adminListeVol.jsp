@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title> </title>
 
-<script type="text/javascript" src="assets/ressources/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css"
