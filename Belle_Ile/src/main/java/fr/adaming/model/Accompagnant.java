@@ -25,7 +25,7 @@ public class Accompagnant implements Serializable{
 	private Adresse adresse;
 
 	@ManyToOne
-	@JoinColumn(name="id_accomp", referencedColumnName="accomp_id")
+	@JoinColumn(name="resa_id", referencedColumnName="id_resa")
 	private Reservation reservation;
 
 	/*
@@ -33,7 +33,7 @@ public class Accompagnant implements Serializable{
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_accomp;
+	private int id;
 	private String nom;
 	private String prenom;
 	private Date dn;
@@ -45,7 +45,7 @@ public class Accompagnant implements Serializable{
 
 	public Accompagnant(int id, String nom, String prenom, Date dn, String tel) {
 		super();
-		this.id_accomp = id;
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dn = dn;
@@ -69,11 +69,11 @@ public class Accompagnant implements Serializable{
 	 */
 
 	public int getId() {
-		return id_accomp;
+		return id;
 	}
 
 	public void setId(int id) {
-		this.id_accomp = id;
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -107,5 +107,24 @@ public class Accompagnant implements Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	public Reservation getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
+	}
+	
+	
+	
 
 }
