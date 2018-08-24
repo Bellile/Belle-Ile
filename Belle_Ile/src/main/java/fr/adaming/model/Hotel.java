@@ -57,15 +57,7 @@ public class Hotel implements Serializable{
 	 */
 	@Lob
 	private byte[] photo;
-	
-	/**
-	 * Attribut utilisé pour afficher l'image dans la vue
-	 * @Transient evite que l'attribut selectionne ne soit integre a la base de
-	 *            donnees.
-	 */
-	@Transient
-	private String image;
-	
+		
 	//Association UML en JAVA
 	/*
 	 * Association avec la classe adresse
