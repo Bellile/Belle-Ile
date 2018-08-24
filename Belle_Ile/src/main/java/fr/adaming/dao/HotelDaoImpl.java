@@ -94,26 +94,16 @@ public class HotelDaoImpl implements IHotelDao {
 		
 		//Récuépration d'une query hibernate
 		Query query = s.createQuery(req);
-		
-		List<Hotel> allHotel = query.list();
-		
-		for (Hotel h : allHotel) {
-			h.setImage("data:image/png);base64," + Base64.encodeBase64String(h.getPhoto()));
-		}
-		
-		return null;
+				
+		return query.list();
 	}
 
 	@Override
 	public Hotel searchByIdhotel(Hotel hotel) {
 		//Récupération de la session hibernate
 		Session s = sf.getCurrentSession();
-		
-		Hotel hOut = (Hotel) s.get(Hotel.class, hotel);
-		
-		hOut.setImage("data:image/png);base64," + Base64.encodeBase64String(h.getPhoto()));
-		
-		return hOut;
+
+		return (Hotel) s.get(Hotel.class, hotel);
 	}
 
 }
