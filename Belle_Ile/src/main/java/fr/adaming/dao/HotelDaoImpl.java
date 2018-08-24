@@ -62,7 +62,7 @@ public class HotelDaoImpl implements IHotelDao {
 		Session s = sf.getCurrentSession();
 
 		// Création de la requête HQL
-		String req = "UPDATE Hotel h SET h.nom=:pNom, h.prestation=:pPrest, h.piscine=:pPisc, h.plage=:pPlage, h.photo=:pPhoto, h.rue=:pRue, h.ville=:pVille, h.cp=:pCp, h.pays=:pPays WHERE h.id_hotel=:pId";
+		String req = "UPDATE Hotel h SET h.nom=:pNom, h.prestation=:pPrest, h.piscine=:pPisc, h.plage=:pPlage, h.photo=:pPhoto, h.adresse.rue=:pRue, h.adresse.cp=:pCp, h.adresse.ville=:pVille, h.adresse.pays=:pPays WHERE h.id_hotel=:pId";
 
 		// Récuépration d'une query hibernate
 		Query query = s.createQuery(req);
@@ -75,9 +75,9 @@ public class HotelDaoImpl implements IHotelDao {
 		query.setParameter("pPlage", hotel.isPlage());
 		query.setParameter("pPhoto", hotel.getPhoto());
 		query.setParameter("pRue", hotel.getAdresse().getRue());
-		query.setParameter("pVille", hotel.getAdresse().getVille());
 		query.setParameter("pCp", hotel.getAdresse().getCp());
-		query.setParameter("pPays", hotel.getAdresse().getPays());
+		query.setParameter("pVille", hotel.getAdresse().getVille());
+		query.setParameter("pPays", hotel.getAdresse().getVille());
 
 		return query.executeUpdate();
 	}
@@ -103,7 +103,7 @@ public class HotelDaoImpl implements IHotelDao {
 		//Récupération de la session hibernate
 		Session s = sf.getCurrentSession();
 
-		return (Hotel) s.get(Hotel.class, hotel);
+		return (Hotel) s.get(Hotel.class, hotel.getId_hotel());
 	}
 
 }
