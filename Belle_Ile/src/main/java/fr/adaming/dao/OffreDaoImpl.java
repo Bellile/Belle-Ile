@@ -12,7 +12,7 @@ import fr.adaming.model.Offre;
 
 @Repository
 public class OffreDaoImpl implements IOffreDao {
-	
+
 	/**
 	 * Attribut pour l'injection de dépendance
 	 */
@@ -29,48 +29,65 @@ public class OffreDaoImpl implements IOffreDao {
 		this.sf = sf;
 	}
 
-	
-	
 	@Override
 	public Offre addOffre(Offre offre) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+
+		s.save(offre);
+
+		return offre;
 	}
 
 	@Override
 	public int deleteOffre(Offre offre) {
-		// TODO Auto-generated method stub
-		return 0;
+		Session s = sf.getCurrentSession();
+
+		String req = "DELETE Offre offre WHERE offre.id_offre=:pId";
+
+		Query query = s.createQuery(req);
+
+		query.setParameter("pId", offre.getId_offre());
+
+		return query.executeUpdate();
 	}
 
 	@Override
 	public int updateOffre(Offre offre) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		try {
+			Session s = sf.getCurrentSession();
+
+			s.saveOrUpdate(offre);
+
+			return 1;
+		} catch (Exception e) {
+			return 0;
+		}
+
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Offre> searchAllOffre() {
-		Session s=sf.getCurrentSession();
-		
-		String req="FROM Offre";
-		
-		Query query=s.createQuery(req);
-		
+		Session s = sf.getCurrentSession();
+
+		String req = "FROM Offre";
+
+		Query query = s.createQuery(req);
+
 		return query.list();
 	}
 
 	@Override
 	public Offre searchOffreById(Offre offre) {
-		Session s=sf.getCurrentSession();
-		
-		String req="FROM Offre offre WHERE offre.id_offre=:pId";
-		
-		Query query=s.createQuery(req);
-		
+		Session s = sf.getCurrentSession();
+
+		String req = "FROM Offre offre WHERE offre.id_offre=:pId";
+
+		Query query = s.createQuery(req);
+
 		query.setParameter("pId", offre.getId_offre());
-		
+
 		return (Offre) query.uniqueResult();
 	}
 

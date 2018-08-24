@@ -1,4 +1,4 @@
-package fr.adaming.daoTest;
+package fr.adaming.serviceTest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,20 +12,24 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IOffreDao;
+import fr.adaming.model.Hotel;
+import fr.adaming.model.LocationVoiture;
 import fr.adaming.model.Offre;
+import fr.adaming.model.Vol;
+import fr.adaming.service.IOffreService;
 
 //permet de lance
 @RunWith(SpringJUnit4ClassRunner.class)
 // permet de définir la localisation du fichier de configuration
 // application-context pour lire les annotations
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/application-context.xml" })
-public class OffreDaoImplTest {
+public class OffreServiceImplTest {
 
 	@Autowired
-	private IOffreDao offreDao;
+	private IOffreService offreService;
 
-	public void setOffreDao(IOffreDao offreDao) {
-		this.offreDao = offreDao;
+	public void setOffreDao(IOffreService offreService) {
+		this.offreService = offreService;
 	}
 
 	@Test
@@ -33,7 +37,7 @@ public class OffreDaoImplTest {
 	@Transactional(readOnly = true)
 	public void testSearchAllOffreSizeListe () {
 		
-		assertEquals(2,offreDao.searchAllOffre().size());
+		assertEquals(3,offreService.searchAllOffre().size());
 	}
 
 	@Test
@@ -45,7 +49,7 @@ public class OffreDaoImplTest {
 		offreIn.setId_offre(1);
 		
 		
-		Offre offreOut=offreDao.searchOffreById(offreIn);
+		Offre offreOut=offreService.searchOffreById(offreIn);
 		
 		assertEquals (10, offreOut.getNbDispo());
 	}
@@ -56,10 +60,10 @@ public class OffreDaoImplTest {
 	@Transactional
 	public void testAddOffreSizeListe () {
 		Offre offreIn=new Offre(20, 4000, 20, 0, null);
+			
+		offreService.addOffre(offreIn);
 		
-		offreDao.addOffre(offreIn);
-		
-		assertEquals(3,offreDao.searchAllOffre().size());
+		assertEquals(4,offreService.searchAllOffre().size());
 	}
 	
 	
@@ -70,9 +74,9 @@ public class OffreDaoImplTest {
 		Offre offreIn=new Offre();
 		offreIn.setId_offre(1);
 		
-		offreDao.deleteOffre(offreIn);
+		offreService.deleteOffre(offreIn);
 		
-		assertEquals(1,offreDao.searchAllOffre().size());
+		assertEquals(2,offreService.searchAllOffre().size());
 	}
 	
 	@Test
@@ -82,12 +86,16 @@ public class OffreDaoImplTest {
 		Offre offreIn=new Offre();
 		offreIn.setId_offre(4);
 		
-		Offre offreOut=offreDao.searchOffreById(offreIn);
+		Offre offreOut=offreService.searchOffreById(offreIn);
 		offreOut.setNbDispo(20);
 		
-		offreDao.updateOffre(offreOut);
+		Hotel hotel=new Hotel();
+		LocationVoiture location=new LocationVoiture();
+		Vol vol=new Vol();
 		
-		assertEquals (20, offreDao.searchOffreById(offreIn).getNbDispo());
+		offreService.updateOffre(offreOut, hotel, location, vol);
+		
+		assertEquals (20, offreService.searchOffreById(offreIn).getNbDispo());
 		
 	}
 }
