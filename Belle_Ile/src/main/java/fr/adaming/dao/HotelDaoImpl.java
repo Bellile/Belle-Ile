@@ -62,13 +62,14 @@ public class HotelDaoImpl implements IHotelDao {
 		Session s = sf.getCurrentSession();
 
 		// Création de la requête HQL
-		String req = "UPDATE Hotel h SET h.prestation=:pPrest, h.piscine=:pPisc, h.plage=:pPlage, h.photo=:pPhoto, h.rue=:pRue, h.ville=:pVille, h.cp=:pCp, h.pays=:pPays WHERE h.id_hotel=:pId";
+		String req = "UPDATE Hotel h SET h.nom=:pNom, h.prestation=:pPrest, h.piscine=:pPisc, h.plage=:pPlage, h.photo=:pPhoto, h.rue=:pRue, h.ville=:pVille, h.cp=:pCp, h.pays=:pPays WHERE h.id_hotel=:pId";
 
 		// Récuépration d'une query hibernate
 		Query query = s.createQuery(req);
 
 		// Paramétrage de la requête
 		query.setParameter("pId", hotel.getId_hotel());
+		query.setParameter("pNom", hotel.getNom());
 		query.setParameter("pPrest", hotel.getPrestation());
 		query.setParameter("pPisc", hotel.isPiscine());
 		query.setParameter("pPlage", hotel.isPlage());

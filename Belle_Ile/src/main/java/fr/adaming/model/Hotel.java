@@ -43,6 +43,11 @@ public class Hotel implements Serializable{
 	private String prestation;
 	
 	/**
+	 * Le type de prestation que propose un hotel
+	 */
+	private String nom;
+	
+	/**
 	 * Un indicateur qui permet de savoir si l'hotel possède un hotel ou non
 	 */
 	private boolean piscine;
@@ -87,24 +92,30 @@ public class Hotel implements Serializable{
 	/*
 	 * Un constructeur sans le paramètre id pour instancier un objet hotel et l'ajouter à la base de données
 	 */
-	public Hotel(String prestation, boolean piscine, boolean plage, byte[] photo) {
+	public Hotel(String prestation, String nom, boolean piscine, boolean plage, byte[] photo, Adresse adresse) {
 		super();
 		this.prestation = prestation;
+		this.nom = nom;
 		this.piscine = piscine;
 		this.plage = plage;
 		this.photo = photo;
+		this.adresse = adresse;
 	}
 	
+
 	/*
 	 * Un constructeur complet pour instancier un objet hotel récupérer depuis la base de données
 	 */
-	public Hotel(int id_hotel, String prestation, boolean piscine, boolean plage, byte[] photo) {
+	public Hotel(int id_hotel, String prestation, String nom, boolean piscine, boolean plage, byte[] photo,
+			Adresse adresse) {
 		super();
 		this.id_hotel = id_hotel;
 		this.prestation = prestation;
+		this.nom = nom;
 		this.piscine = piscine;
 		this.plage = plage;
 		this.photo = photo;
+		this.adresse = adresse;
 	}
 	
 	//Getter/Setter
@@ -112,7 +123,6 @@ public class Hotel implements Serializable{
 		return id_hotel;
 	}
 	
-
 	public void setId_hotel(int id_hotel) {
 		this.id_hotel = id_hotel;
 	}
@@ -172,15 +182,10 @@ public class Hotel implements Serializable{
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-	
-	public String getImage() {
-		return image;
+	public String getNom() {
+		return nom;
 	}
-	
-	public void setImage(String image) {
-		this.image = image;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
-	
-	
-
 }
