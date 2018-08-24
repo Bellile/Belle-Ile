@@ -29,7 +29,7 @@ import javax.persistence.Transient;
 public class Hotel implements Serializable{
 
 	//Attributs
-	/*
+	/**
 	 * Le nom de l'entier correspondant à l'id de l'hotel dans la base de données
 	 */
 	@Id
@@ -37,16 +37,16 @@ public class Hotel implements Serializable{
 	@Column(name="id_hotel")
 	private int id_hotel;
 	
-	/*
+	/**
 	 * Le type de prestation que propose un hotel
 	 */
 	private String prestation;
 	
-	/*
+	/**
 	 * Un indicateur qui permet de savoir si l'hotel possède un hotel ou non
 	 */
 	private boolean piscine;
-	/*
+	/**
 	 * Un indicateur qui permet de savoir si l'hotel a accès à une plage ou non
 	 */
 	private boolean plage;
