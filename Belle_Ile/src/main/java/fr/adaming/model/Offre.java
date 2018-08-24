@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,15 +33,15 @@ public class Offre implements Serializable {
 	private byte[] photo;
 
 	@OneToOne
-	@JoinColumn(name = "vol_id", referencedColumnName = "id_vol")
+	@JoinColumn(name = "vol_id", referencedColumnName = "id_vol", nullable=true)
 	private Vol vol;
 
 	@ManyToOne
-	@JoinColumn(name = "hotel_id", referencedColumnName = "id_hotel")
+	@JoinColumn(name = "hotel_id", referencedColumnName = "id_hotel",nullable=true)
 	private Hotel hotel;
 
 	@OneToOne
-	@JoinColumn(name = "location_id", referencedColumnName = "id_location")
+	@JoinColumn(name = "location_id", referencedColumnName = "id_location",nullable=true)
 	private LocationVoiture location;
 
 	// Constructeur

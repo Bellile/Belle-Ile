@@ -103,26 +103,12 @@ public class VolController {
 	}
 
 	@RequestMapping(value = "/showUpdateVol", method = RequestMethod.GET)
-	public String showUpdateVol(Model model, @RequestParam(value="msg", required=false) String msg) {
-		
+	public String showUpdateVol(Model model, @RequestParam(value = "msg", required = false) String msg) {
+
 		if (msg != null) {
 			model.addAttribute("msg", msg);
 		}
 		model.addAttribute("volUpdate", new Vol());
-		return "adminVolUpdate";
-	}
-
-	@RequestMapping(value = "/updateVolLink")
-	public String updateLien(Model modele, @RequestParam("pId") int id, RedirectAttributes rda) {
-		// synthaxe query param: pour récupérer via <a href="<c:url
-		// value="/etudiant/updateLink?pId=${e.id_etu}"/>"></a>
-
-		Vol volIn = new Vol();
-		volIn.setId_vol(id);
-
-		Vol volOut = volService.searchVolById(volIn);
-
-		modele.addAttribute("volUpdate", volOut);
 		return "adminVolUpdate";
 	}
 
@@ -140,5 +126,19 @@ public class VolController {
 			rda.addAttribute("msg", true);
 			return "redirect:showUpdateVol";
 		}
+	}
+
+	@RequestMapping(value = "/updateVolLink")
+	public String updateLien(Model modele, @RequestParam("pId") int id, RedirectAttributes rda) {
+		// synthaxe query param: pour récupérer via <a href="<c:url
+		// value="/etudiant/updateLink?pId=${e.id_etu}"/>"></a>
+
+		Vol volIn = new Vol();
+		volIn.setId_vol(id);
+
+		Vol volOut = volService.searchVolById(volIn);
+
+		modele.addAttribute("volUpdate", volOut);
+		return "adminVolUpdate";
 	}
 }

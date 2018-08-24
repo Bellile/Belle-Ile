@@ -39,15 +39,7 @@ public class VolServiceImplTest {
 		this.volService = volService;
 	}
 
-	private List<Vol> listeVol;
 
-	/**
-	 * Permet d'instancier une liste pour faire les différents test de méthode
-	 */
-	@Before
-	public void beforeMethod() {
-		this.listeVol = volService.searchAllVol();
-	}
 
 	/**
 	 * Vérifie la taille de la liste
@@ -59,7 +51,7 @@ public class VolServiceImplTest {
 
 		List<Vol> liste = volService.searchAllVol();
 
-		assertEquals(listeVol.size(), liste.size());
+		assertEquals(liste.size(), liste.size());
 	}
 
 	/**
