@@ -28,7 +28,7 @@
 		<form:form cssClass="form-horizontal" method="POST" action="updateVol"
 			modelAttribute="volUpdate">
 
-			<div class="form-group" >
+			<div class="form-group" style="display: none">
 				<form:label cssClass="col-sm-2 control-label" path="id_vol">numéro du voyage</form:label>
 				<div class="col-sm-10">
 					<form:input cssClass="form-control" placeholder="Id" path="id_vol"
@@ -78,6 +78,7 @@
 
 
 		</form:form>
+		
 		<c:if test="${not empty msg}">
 			<h1>La modification a échoué</h1>
 		</c:if>

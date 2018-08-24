@@ -1,7 +1,5 @@
 package fr.adaming.controllers;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,12 +7,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import fr.adaming.model.Vol;
 import fr.adaming.service.IVolService;
 
-@ControllerAdvice
+@Controller
 @RequestMapping("/admin/vol")
 public class VolController {
 
@@ -37,9 +34,9 @@ public class VolController {
 	/**
 	 * Setter pour l'injection dépendance
 	 * 
-	 * @param volDao
+	 * @param volService
 	 */
-	public void setVolDao(IVolService volService) {
+	public void setVolService(IVolService volService) {
 		this.volService = volService;
 	}
 
