@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.adaming.model.Hotel;
 import fr.adaming.service.IHotelService;
@@ -25,7 +25,8 @@ public class ImageController {
 	private IHotelService hService;
 	
 	//Methode pour recuperer les images de hotel
-	@RequestMapping(value="/image", method=RequestMethod.GET, produces=MediaType.IMAGE_JPEG_VALUE)
+	@RequestMapping(value="/hotel", method=RequestMethod.GET, produces=MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
 	public byte[] getHotelImage(@RequestParam("pId") int id) throws IOException {
 		Hotel hOut = hService.searchByIdHotel(id);
 		

@@ -27,6 +27,7 @@
 		<th>Prestation</th>
 		<th>Piscine</th>
 		<th>Plage</th>
+		<th>Ocean</th>
 		<th>Photo</th>
 		<th>Opération</th>
 	</tr>
@@ -37,7 +38,8 @@
 			<td>${h.prestation}</td>
 			<td>${h.piscine}</td>
 			<td>${h.plage}</td>
-			<td><img src="${pageContext.request.contextPath}/admin/hot/image?pId=${h.id_hotel}"></td>
+			<td>${h.categorie.ocean}</td>
+			<td><img src="${pageContext.request.contextPath}/image/hotel?pId=${h.id_hotel}" style="max-height: 150px; max-width: 150px"></td>
 			<td><a href='<c:url value="/admin/hot/updHotelLink?pId=${h.id_hotel}"></c:url>'>Modifier</a> 
 			| <a href='<c:url value="/admin/hot/delHotelLink/${h.id_hotel}"></c:url>'>Supprimer</a></td>
 		</tr>
