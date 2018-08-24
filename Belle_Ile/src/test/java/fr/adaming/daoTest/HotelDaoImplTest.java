@@ -17,7 +17,7 @@ import fr.adaming.model.Categorie;
 import fr.adaming.model.Hotel;
 
 /**
- * Class test du DAO categorie
+ * Class test du DAO Hotel
  * @author Adaming
  *
  */
@@ -101,10 +101,7 @@ public class HotelDaoImplTest {
 		//Instanciation d'un hotel
 		Adresse adresse = new Adresse("Royal Road","35051" ,"Pointe aux Piments" , "île Maurice");
 		Hotel h = new Hotel(1, "Demi-pension", "Recif Attitude", true, true, null, adresse);
-		Categorie cat = new Categorie();
-		cat.setId_cat(1);
-		Categorie catIn = catDao.searchByIdCat(cat);
-		h.setCategorie(catIn);
+		
 		hDao.updateHotel(h);
 		
 		assertEquals("Recif Attitude", hDao.searchAllHotel().get(0).getNom());
@@ -118,7 +115,7 @@ public class HotelDaoImplTest {
 		Hotel h = new Hotel();
 		h.setId_hotel(1);
 		
-		assertEquals("Le Palme", hDao.searchByIdhotel(h).getNom());
+		assertEquals("Le Palme", hDao.searchByIdHotel(h).getNom());
 		
 		
 	}

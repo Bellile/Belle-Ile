@@ -99,7 +99,7 @@ public class HotelDaoImpl implements IHotelDao {
 	}
 
 	@Override
-	public Hotel searchByIdhotel(Hotel hotel) {
+	public Hotel searchByIdHotel(Hotel hotel) {
 		//Récupération de la session hibernate
 		Session s = sf.getCurrentSession();
 

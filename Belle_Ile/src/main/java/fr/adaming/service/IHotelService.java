@@ -1,23 +1,23 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Hotel;
-
 
 /**
  * Interface pour le CRUD des classes
  * @author Thibault
  *
  */
-public interface IHotelDao {
+public interface IHotelService {
 
 	/**<b>add</b>
 	 * Méthode pour ajouter une hotel hotel dans la base de données
 	 * @param hotel : l'objet hotel persistant à ajouter
 	 * @return hotel l'objet ajouté dans la base de données
 	 */
-	public Hotel addHotel(Hotel hotel);
+	public Hotel addHotel(Hotel hotel, Categorie cat);
 	
 	/**<b>delete</b>
 	 * Méthode pour supprimer une hotel hotel dans la base de données
