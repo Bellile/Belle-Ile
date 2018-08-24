@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -76,26 +78,73 @@ public class LocationVoitureController {
 		}
 
 	}
-	
-	
+
 	/*
 	 * Supprimer une location de voiture
 	 */
-	
-	@RequestMapping(value="/supprLCLink/{pId}", method=RequestMethod.GET)
-	public String afficheSupprLc(ModelMap modele, @PathVariable("pId") int id){
-		
+
+	@RequestMapping(value = "/supprLCLink/{pId}", method = RequestMethod.GET)
+	public String afficheSupprLc(ModelMap modele, @PathVariable("pId") int id) {
+
 		LocationVoiture lc = new LocationVoiture();
 		lc.setId_location(id);
-		
+
 		lcService.delete(lc);
-		
-		List<LocationVoiture> listLC=lcService.searchAllLC();
-		
+
+		List<LocationVoiture> listLC = lcService.searchAllLC();
+
 		modele.addAttribute("listeLC", listLC);
-		
+
 		return "listLC";
 	}
+
+	/*
+	 * Modifier une location de voiture
+	 */
+	@RequestMapping(value = "/modifLCLink/{pId}", method = RequestMethod.GET)
+	public String afficheModifLC(Model model, @RequestParam("pId") int id) {
+
+		LocationVoiture lcIn = new LocationVoiture();
+		lcIn.setId_location(id);
+
+		LocationVoiture lcOut = lcService.searchById(lcIn);
+
+		model.addAttribute("ModifLC", lcOut);
+
+		return "ListLC";
+
+	}
+
+	
+	@RequestMapping(value="/adminFinfLC", method=RequestMethod.GET)
+	public ModelAndView SearchLCById(){
+		
+		return new ModelAndView("rechercherlc", "lcSearch", new LocationVoiture());		
+
+	}
+	@RequestMapping(value="/soumettreSearchLC", method=RequestMethod.POST)
+	public String afficheLCForm(ModelMap modele, @ModelAttribute ("lcSearch") LocationVoiture lcIn, RedirectAttributes rda){
+		
+	LocationVoiture lcOut = lcService.searchById(lcIn);
+		
+		if(lcOut!=null){
+			
+			modele.addAttribute("lcFind", lcOut);
+			
+			return "adminFindLC";
+		}else{
+			
+			rda.addAttribute("msg", "Il n'y a pas de voiture pour cet id");
+			return "redirect:adminFinfLC";			
+		}	
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

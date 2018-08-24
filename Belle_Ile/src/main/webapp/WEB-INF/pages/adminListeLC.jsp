@@ -34,7 +34,7 @@
 				<td>${lc.prixJournee }</td>
 				<td>${lc.typeVoiture }</td>
 
-				<td><a href='<c:url value="?pId=${lc.id_location}"></c:url>'>Modifier</a>
+				<td><a href='<c:url value="/admin/location/modifLCLink?pId=${lc.id_location}"></c:url>'>Modifier</a>
 					| <a href='<c:url value="/admin/location/supprLCLink/${lc.id_location}"></c:url>'>Supprimer</a></td>
 
 

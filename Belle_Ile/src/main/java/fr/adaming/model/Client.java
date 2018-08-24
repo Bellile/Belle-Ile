@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "clients")
-public class Client extends Accompagnant {
+public class Client extends Personne {
 
 	/** Attribut */
 
@@ -34,20 +34,26 @@ public class Client extends Accompagnant {
 	public Client() {
 		super();
 	}
+	
 
-
-	public Client(String nom, String prenom, Date dn, String tel, String mail, String mdp, boolean active) {
-		super(nom, prenom, dn, tel);
+	public Client(String nom, String prenom, Date dn, String tel, Adresse adresse, String mail, String mdp,
+			boolean active, List<Reservation> listeResaClient, Role role) {
+		super(nom, prenom, dn, tel, adresse);
 		this.mail = mail;
 		this.mdp = mdp;
 		this.active = active;
+		this.listeResaClient = listeResaClient;
+		this.role = role;
 	}
 
-	public Client(int id, String nom, String prenom, Date dn, String tel, String mail, String mdp, boolean active) {
-		super(id, nom, prenom, dn, tel);
+	public Client(int id, String nom, String prenom, Date dn, String tel, Adresse adresse, String mail, String mdp,
+			boolean active, List<Reservation> listeResaClient, Role role) {
+		super(id, nom, prenom, dn, tel, adresse);
 		this.mail = mail;
 		this.mdp = mdp;
 		this.active = active;
+		this.listeResaClient = listeResaClient;
+		this.role = role;
 	}
 
 	/** Getter setter */
