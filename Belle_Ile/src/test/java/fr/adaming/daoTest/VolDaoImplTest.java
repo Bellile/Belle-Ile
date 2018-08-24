@@ -2,10 +2,8 @@ package fr.adaming.daoTest;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,14 +38,6 @@ public class VolDaoImplTest {
 	}
 
 	private List<Vol> listeVol;
-
-	/**
-	 * Permet d'instancier une liste pour faire les différents test de méthode
-	 */
-	@Before
-	public void beforeMethod() {
-		this.listeVol = volDao.searchAllVol();
-	}
 
 	/**
 	 * Vérifie la taille de la liste
@@ -119,11 +109,11 @@ public class VolDaoImplTest {
 	public void testUpdateVolValDepart() {
 		Vol volIn = new Vol();
 		volIn.setId_vol(1);
-		
-		Vol volOut=volDao.searchVolById(volIn);
+
+		Vol volOut = volDao.searchVolById(volIn);
 
 		volOut.setDepart("Lyon");
-		
+
 		volDao.updateVol(volOut);
 
 		assertEquals("Lyon", volDao.searchVolById(volIn).getDepart());

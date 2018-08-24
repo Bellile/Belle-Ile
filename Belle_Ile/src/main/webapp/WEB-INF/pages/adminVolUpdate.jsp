@@ -20,22 +20,30 @@
 <body>
 
 	<div class="container">
-		<h1>Renseigner les informations du vol</h1>
+		<h1>Modifier les informations du vol</h1>
 
-		<h1>${msg }</h1>
 
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="dDepart">Date de départ</form:label>
-			<div class="col-sm-10">
-				<form:input type="date" cssClass="form-control"
-					placeholder="Date de départ" path="dDepart" />
+
+
+		<form:form cssClass="form-horizontal" method="POST" action="updateVol"
+			modelAttribute="volUpdate">
+
+			<div class="form-group" >
+				<form:label cssClass="col-sm-2 control-label" path="id_vol">numéro du voyage</form:label>
+				<div class="col-sm-10">
+					<form:input cssClass="form-control" placeholder="Id" path="id_vol"
+						 />
+				</div>
 			</div>
-		</div>
 
+			<div class="form-group">
+				<form:label cssClass="col-sm-2 control-label" path="dDepart">Date de départ</form:label>
+				<div class="col-sm-10">
+					<form:input type="date" cssClass="form-control"
+						placeholder="Date de départ" path="dDepart" />
+				</div>
+			</div>
 
-
-		<form:form cssClass="form-horizontal" method="POST" action="addVol"
-			modelAttribute="volAjout">
 			<div class="form-group">
 				<form:label cssClass="col-sm-2 control-label" path="depart">Aéroport de départ</form:label>
 				<div class="col-sm-10">
@@ -44,8 +52,6 @@
 				</div>
 			</div>
 
-
-
 			<div class="form-group">
 				<form:label cssClass="col-sm-2 control-label" path="dArrivee">Date d'arrivée</form:label>
 				<div class="col-sm-10">
@@ -53,7 +59,6 @@
 						placeholder="Date d'arrivée" path="dArrivee" />
 				</div>
 			</div>
-
 
 			<div class="form-group">
 				<form:label cssClass="col-sm-2 control-label" path="arrivee">Aéroport d'arrivée</form:label>
@@ -67,14 +72,20 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Ajouter</button>
+					<button type="submit" class="btn btn-default">Modifier</button>
 				</div>
 			</div>
 
 
 		</form:form>
-
+		<c:if test="${not empty msg}">
+			<h1>La modification a échoué</h1>
+		</c:if>
 
 	</div>
+
+
+
+
 </body>
 </html>
