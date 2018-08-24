@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.adaming.nantes</groupId>
-  <artifactId>Belle_Ile</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  	<!-- spécification des versions -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.adaming.nantes</groupId>
+	<artifactId>Belle_Ile</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<!-- spécification des versions -->
 	<properties>
 		<hibernate.version>4.2.21.FINAL</hibernate.version>
 		<spring.version>4.1.9.RELEASE</spring.version>
@@ -126,7 +127,7 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>3.2.10.RELEASE</version>
 		</dependency>
-		
+
 		<!-- Spring Test pour intégrer Junit avec Spring IoC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -141,7 +142,7 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Lib javax.mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -155,7 +156,7 @@
 			<artifactId>javax.mail</artifactId>
 			<version>1.5.5</version>
 		</dependency>
-		
+
 		<!-- IText -->
 		<!-- itextpdf -->
 		<dependency>
@@ -164,22 +165,14 @@
 			<version>5.0.6</version>
 		</dependency>
 		
-		<!-- Libs Apache Commons -->
-		<!-- commons-codec -->
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.9</version>
-		</dependency>
-
-		<!-- commons-fileupload -->
+		<!-- Libraire pour afficher des images -->
+		<!-- Fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-
-		<!-- commons-io -->
+		<!-- Io -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
