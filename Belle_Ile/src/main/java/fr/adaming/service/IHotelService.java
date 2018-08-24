@@ -44,5 +44,5 @@ public interface IHotelService {
 	 * @param hotel : l'objet hotel avec l'id que l'on recherche
 	 * @return hotel l'objet de la base de données
 	 */
-	public Hotel searchByIdHotel(Hotel hotel);
+	public Hotel searchByIdHotel(int id);
 }

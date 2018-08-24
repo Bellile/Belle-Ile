@@ -37,7 +37,7 @@ public class HotelServiceImplTest {
 		@Transactional(readOnly=true)
 		public void testSearchAllHotelSize() {
 			
-			assertEquals(1, hService.searchAllHotel().size());
+			assertEquals(2, hService.searchAllHotel().size());
 		}
 		
 		//Test du premier objet de la liste
@@ -60,7 +60,7 @@ public class HotelServiceImplTest {
 			Categorie cat = new Categorie();
 			cat.setId_cat(1);
 			hService.addHotel(h, cat);
-			assertEquals(2, hService.searchAllHotel().size());
+			assertEquals(3, hService.searchAllHotel().size());
 		}
 		@Test
 		@Ignore
@@ -84,7 +84,7 @@ public class HotelServiceImplTest {
 			h.setId_hotel(1);
 			
 			hService.deleteHotel(h);
-			assertEquals(0, hService.searchAllHotel().size());
+			assertEquals(1, hService.searchAllHotel().size());
 		}
 		
 		//----Test de la méthode modifier
@@ -106,10 +106,8 @@ public class HotelServiceImplTest {
 		@Ignore
 		@Transactional
 		public void testSearchByIdHotel() {
-			Hotel h = new Hotel();
-			h.setId_hotel(1);
 			
-			assertEquals("Le Palme", hService.searchByIdHotel(h).getNom());
+			assertEquals("Le Palme", hService.searchByIdHotel(1).getNom());
 			
 			
 		}

@@ -1,0 +1,39 @@
+package fr.adaming.controllers;
+
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+import fr.adaming.model.Hotel;
+import fr.adaming.service.IHotelService;
+
+@Controller
+@RequestMapping("/image")
+public class ImageController {
+
+	//Transforamtion de l'association UML en JAVA
+	@Autowired
+	private IHotelService hService;
+	
+	//Methode pour recuperer les images de hotel
+	@RequestMapping(value="/image", method=RequestMethod.GET, produces=MediaType.IMAGE_JPEG_VALUE)
+	public byte[] getHotelImage(@RequestParam("pId") int id) throws IOException {
+		Hotel hOut = hService.searchByIdHotel(id);
+		
+		if (hOut.getPhoto()==null) {
+			return new byte[0];
+		} else {
+			return IOUtils.toByteArray(new ByteArrayInputStream(hOut.getPhoto()));
+		}
+		
+	}
+}

@@ -49,8 +49,9 @@ public class HotelServiceImpl implements IHotelService{
 	}
 
 	@Override
-	public Hotel searchByIdHotel(Hotel hotel) {
-		
+	public Hotel searchByIdHotel(int id) {
+		Hotel hotel =new Hotel();
+		hotel.setId_hotel(id);
 		return hDao.searchByIdHotel(hotel);
 	}
 
