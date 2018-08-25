@@ -1,6 +1,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -46,7 +47,7 @@ public class Offre implements Serializable {
 	private LocationVoiture location;
 
 	@OneToMany(mappedBy="offre")
-	private Reservation resa;
+	private List<Reservation> listResa;
 	
 	// Constructeur
 	public Offre() {
@@ -145,11 +146,11 @@ public class Offre implements Serializable {
 		this.location = location;
 	}
 
-	public Reservation getResa() {
-		return resa;
+	public List<Reservation> getListResa() {
+		return listResa;
 	}
 
-	public void setResa(Reservation resa) {
-		this.resa = resa;
+	public void setListResa(List<Reservation> listResa) {
+		this.listResa = listResa;
 	}
 }
