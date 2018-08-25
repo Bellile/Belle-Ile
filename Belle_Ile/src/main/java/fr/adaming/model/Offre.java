@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,6 +45,9 @@ public class Offre implements Serializable {
 	@JoinColumn(name = "location_id", referencedColumnName = "id_location",nullable=true)
 	private LocationVoiture location;
 
+	@OneToMany(mappedBy="offre")
+	private Reservation resa;
+	
 	// Constructeur
 	public Offre() {
 		super();
@@ -141,4 +145,11 @@ public class Offre implements Serializable {
 		this.location = location;
 	}
 
+	public Reservation getResa() {
+		return resa;
+	}
+
+	public void setResa(Reservation resa) {
+		this.resa = resa;
+	}
 }

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -29,22 +30,33 @@ public class Reservation implements Serializable {
 	@OneToMany(mappedBy="reservation")
 	private List<Accompagnant> listeAccompagnant;
 	
+	@ManyToOne
+	@JoinColumn(name="offre_id", referencedColumnName="id_offre")
+	private Offre offre;
 
 	// attribut
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_resa")
 	private int id_resa;
+	private int nbrePlace;
 
 	// constructeur
 	public Reservation() {
 		super();
 	}
 
-	public Reservation(int id_resa) {
+	public Reservation(int nbrePlace) {
+		super();
+		this.nbrePlace = nbrePlace;
+	}
+	
+	public Reservation(int id_resa, int nbrePlace) {
 		super();
 		this.id_resa = id_resa;
+		this.nbrePlace = nbrePlace;
 	}
+
 
 	// getter et setter
 	public int getId_resa() {
@@ -70,8 +82,21 @@ public class Reservation implements Serializable {
 	public void setListeAccompagnant(List<Accompagnant> listeAccompagnant) {
 		this.listeAccompagnant = listeAccompagnant;
 	}
-	
-	
-	
+
+	public Offre getOffre() {
+		return offre;
+	}
+
+	public void setOffre(Offre offre) {
+		this.offre = offre;
+	}
+
+	public int getNbrePlace() {
+		return nbrePlace;
+	}
+
+	public void setNbrePlace(int nbrePlace) {
+		this.nbrePlace = nbrePlace;
+	}
 
 }
