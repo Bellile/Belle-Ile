@@ -40,7 +40,6 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testSearchAllResaSizeListe() {
 		List<Reservation> listeResa = resaDao.searchAllResa();
@@ -49,7 +48,6 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testSearchResaByIdValClient() {
 
@@ -63,7 +61,6 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testAddResaSizeListe() {
 		Client clIn = new Client();
@@ -78,11 +75,14 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testDeleteResaSizeListe() {
+		Client clIn=new Client();
+		clIn.setId(2);
+		
 		Reservation resaIn = new Reservation();
 		resaIn.setId_resa(2);
+		resaIn.setClient(clIn);
 
 		//on supprime les accompagnants associé à la réservation avant de supprimer la resa
 		Accompagnant accomp=new Accompagnant();
@@ -96,23 +96,23 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testUpdateResaValClient() {
+
 		Reservation resaIn = new Reservation();
 		resaIn.setId_resa(2);
 
-		Client clIn = new Client();
-		clIn.setId(1);
+
+
 
 		Reservation resaOut = resaDao.searchResaById(resaIn);
-		resaOut.setClient(clIn);
+		resaOut.setNbrePlace(50);
 
 		resaDao.updateResa(resaOut);
 
 		Reservation resaOut2 = resaDao.searchResaById(resaIn);
 
-		assertEquals(1, resaOut2.getClient().getId());
+		assertEquals(50, resaOut2.getNbrePlace());
 
 	}
 

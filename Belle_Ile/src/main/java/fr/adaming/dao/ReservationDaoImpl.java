@@ -63,11 +63,12 @@ public class ReservationDaoImpl implements IReservationDao {
 	public int deleteResa(Reservation resa) {
 		Session s = sf.getCurrentSession();
 		
-		String req="DELETE FROM Reservation resa WHERE resa.id_resa=:pId";
+		String req="DELETE FROM Reservation resa WHERE resa.id_resa=:pId AND resa.client.id=:pIdCl";
 		
 		Query query=s.createQuery(req);
 		
 		query.setParameter("pId", resa.getId_resa());
+		query.setParameter("pIdCl", resa.getClient().getId());
 		
 		return query.executeUpdate();
 	}
@@ -76,11 +77,13 @@ public class ReservationDaoImpl implements IReservationDao {
 	public int updateResa(Reservation resa) {
 		Session s = sf.getCurrentSession();
 		
-		String req="UPDATE Reservation resa SET resa.client.id=:pId";
+		String req="UPDATE Reservation resa SET resa.nbrePlace=:pNb WHERE resa.id_resa=:pId AND resa.client.id=:pIdCl";
 		
 		Query query=s.createQuery(req);
 		
-		query.setParameter("pId", resa.getClient().getId());
+		query.setParameter("pNb", resa.getNbrePlace());
+		query.setParameter("pId", resa.getId_resa());
+		query.setParameter("pIdCl", resa.getClient().getId());
 		
 		return query.executeUpdate();
 	}

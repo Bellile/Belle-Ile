@@ -32,7 +32,6 @@ public class ReservationServiceImplTest {
 
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testSearchAllResaSizeListe() {
 		List<Reservation> listeResa = resaService.searchAllResa();
@@ -41,7 +40,6 @@ public class ReservationServiceImplTest {
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testSearchResaByIdValClient() {
 
@@ -55,51 +53,51 @@ public class ReservationServiceImplTest {
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testAddResaSizeListe() {
 		Client clIn = new Client();
 		clIn.setId(1);
 
 		Reservation resaIn = new Reservation();
-		resaIn.setClient(clIn);
+		resaIn.setNbrePlace(20);
 
-		resaService.addResa(resaIn);
+		resaService.addResa(resaIn, clIn);
 
 		assertEquals(3, resaService.searchAllResa().size());
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testDeleteResaSizeListe() {
+		Client clIn=new Client ();
+		clIn.setId(2);
+		
 		Reservation resaIn = new Reservation();
 		resaIn.setId_resa(2);
 
 	
-		resaService.deleteResa(resaIn);
+		resaService.deleteResa(resaIn, clIn);
 
 		assertEquals(1, resaService.searchAllResa().size());
 	}
 
 	@Test
-	@Ignore
 	@Transactional
 	public void testUpdateResaValClient() {
 		Reservation resaIn = new Reservation();
 		resaIn.setId_resa(2);
 
-		Client clIn = new Client();
-		clIn.setId(1);
-
 		Reservation resaOut = resaService.searchResaById(resaIn);
-		resaOut.setClient(clIn);
+		resaOut.setNbrePlace(50);;
 
-		resaService.updateResa(resaOut);
+		Client clIn = new Client();
+		clIn.setId(2);
+		
+		resaService.updateResa(resaOut, clIn);
 
 		Reservation resaOut2 = resaService.searchResaById(resaIn);
 
-		assertEquals(1, resaOut2.getClient().getId());
+		assertEquals(50, resaOut2.getNbrePlace());
 
 	}
 

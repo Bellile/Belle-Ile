@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IReservationDao;
 import fr.adaming.model.Accompagnant;
+import fr.adaming.model.Client;
 import fr.adaming.model.Reservation;
 
 @Service
@@ -41,13 +42,15 @@ public class ReservationServiceImpl implements IReservationService {
 	}
 
 	@Override
-	public Reservation addResa(Reservation resa) {
+	public Reservation addResa(Reservation resa, Client cl) {
+		resa.setClient(cl);
 
 		return resaDao.addResa(resa);
 	}
 
 	@Override
-	public int deleteResa(Reservation resa) {
+	public int deleteResa(Reservation resa, Client cl) {
+		resa.setClient(cl);
 
 		List <Accompagnant> listeAccomp=accompService.searchAccompByIdResa(resa);
 		
@@ -59,7 +62,8 @@ public class ReservationServiceImpl implements IReservationService {
 	}
 
 	@Override
-	public int updateResa(Reservation resa) {
+	public int updateResa(Reservation resa, Client cl) {
+		resa.setClient(cl);
 
 		return resaDao.updateResa(resa);
 	}
