@@ -162,7 +162,7 @@ public class RechercheImplDao implements IRechercheDao{
 		Session s = sf.getCurrentSession();
 		
 		//Création de la requête HQL
-		String req ="FROM Offre o WHERE o.promo BETWEEN :pPromo AND 1";
+		String req ="FROM Offre o WHERE o.promo BETWEEN :pPromo AND 1.00";
 		
 		//Récupération de la query
 		Query query = s.createQuery(req);
@@ -181,13 +181,13 @@ public class RechercheImplDao implements IRechercheDao{
 		Session s = sf.getCurrentSession();
 		
 		//Création de la requête HQL
-		String req ="FROM Offre o WHERE o.promo BETWEEN :pMin AND :pMax";
+		String req ="FROM Offre o WHERE o.prix BETWEEN :pMin AND :pMax";
 		
 		//Récupération de la query
 		Query query = s.createQuery(req);
 		
 		//Paramétrages de la query
-		Double min = offre.getPrix()- offre.getPrix()*0.05;
+		Double min = offre.getPrix() - offre.getPrix()*0.05;
 		Double max = offre.getPrix() + offre.getPrix()*0.05;
 		query.setParameter("pMin", min);
 		query.setParameter("pMax", max);
@@ -203,7 +203,7 @@ public class RechercheImplDao implements IRechercheDao{
 		Session s = sf.getCurrentSession();
 		
 		//Création de la requête HQL
-		String req ="FROM Accompagnat a WHERE a.reservation.id_resa=:pResa";
+		String req ="FROM Accompagnant a WHERE a.reservation.id_resa=:pResa";
 		
 		//Récupération de la query
 		Query query = s.createQuery(req);
@@ -228,7 +228,8 @@ public class RechercheImplDao implements IRechercheDao{
 		Query query = s.createQuery(req);
 		
 		//Paramétrages de la query
-		query.setParameter("pType", type);
+		String rech = "%" + type + "%";
+		query.setParameter("pType", rech);
 		
 		//Appel de la méthode
 		return query.list();
@@ -263,7 +264,7 @@ public class RechercheImplDao implements IRechercheDao{
 		Session s = sf.getCurrentSession();
 		
 		//Création de la requête HQL
-		String req ="FROM Reservation r WHERE r.client=:pClient";
+		String req ="FROM Reservation r WHERE r.client.id=:pClient";
 		
 		//Récupération de la query
 		Query query = s.createQuery(req);
