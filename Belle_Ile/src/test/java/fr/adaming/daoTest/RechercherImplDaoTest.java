@@ -11,11 +11,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IRechercheDao;
+import fr.adaming.dao.IVolDao;
 import fr.adaming.model.Client;
 import fr.adaming.model.Hotel;
 import fr.adaming.model.LocationVoiture;
 import fr.adaming.model.Offre;
 import fr.adaming.model.Reservation;
+import fr.adaming.model.Vol;
 
 /**
  * Class test du DAO recherche
@@ -28,6 +30,9 @@ public class RechercherImplDaoTest {
 
 	@Autowired
 	IRechercheDao reDao;
+	
+	@Autowired
+	IVolDao vDao;
 	
 	//----Methode de recherche hotel par nom
 	@Test
@@ -74,6 +79,7 @@ public class RechercherImplDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	@Transactional(readOnly=true)
 	public void testSearchOffrePrix() {
 		Offre offre = new Offre();
@@ -123,5 +129,23 @@ public class RechercherImplDaoTest {
 		Client client = new Client();
 		client.setMail("a@a");
 		assertEquals("Bob", reDao.searchByMailClient(client).getNom());
+	}
+	
+	@Test
+	@Ignore
+	@Transactional(readOnly=true)
+	public void testSearchOffreDepart () {
+		Vol vol = new Vol();
+		vol.setId_vol(2);
+		assertEquals(0, reDao.searchByDepartOffre(vDao.searchVolById(vol)).size());
+	}
+	
+	@Test
+	@Ignore
+	@Transactional(readOnly=true)
+	public void testSearchOffreRetour () {
+		Vol vol = new Vol();
+		vol.setId_vol(1);
+		assertEquals(1, reDao.searchByRetourOffre(vDao.searchVolById(vol)).size());
 	}
 }

@@ -143,7 +143,7 @@ public class RechercheImplDao implements IRechercheDao{
 		Session s = sf.getCurrentSession();
 		
 		//Création de la requête HQL
-		String req ="FROM Offre o WHERE o.vol.dDepart=:pRetour";
+		String req ="FROM Offre o WHERE o.vol.dArrivee=:pRetour";
 		
 		//Récupération de la query
 		Query query = s.createQuery(req);
