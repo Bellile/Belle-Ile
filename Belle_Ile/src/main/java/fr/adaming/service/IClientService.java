@@ -18,5 +18,6 @@ public interface IClientService {
 	
 	public Client searchByIdCl(Client c);
 	
+	public void sendMail(Client c, String messageMail);
 
 }

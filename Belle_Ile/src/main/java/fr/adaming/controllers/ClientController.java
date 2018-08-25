@@ -71,13 +71,15 @@ public class ClientController {
 
 		Client clOut = cService.addCl(cl);
 
-		// if (clOut.getId() != 0) {
-		return "redirect:client/showAddCient";
-		//
-		// } else {
-		// rda.addAttribute("msg", "L'ajout n'a pas été effectué");
-		// return "redirect:client/showAddCient";
-		// }
+		if (cl.getId() != 0) {
+
+			cService.sendMail(clOut, "\n nous vous confirmons votre inscription à Belle Ile, voici votre identidiant et mot de passe : "+ cl.getMail() + ", " + cl.getMdp());
+			return "redirect:showAddCient";
+
+		} else {
+			rda.addAttribute("msg", "L'ajout n'a pas été effectué");
+			return "redirect:client/showAddCient";
+		}
 
 	}
 
@@ -99,6 +101,7 @@ public class ClientController {
 
 		if (verif != 0) {
 
+			cService.sendMail(cl, "\n nous vous confirmons que les modifications ont bien été prisent en compte");
 			return "redirect:showUpdateClient";
 
 		} else {

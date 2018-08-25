@@ -34,7 +34,7 @@
 	<c:forEach var="h" items="${listeHotel}">
 		<tr>
 			<td>${h.nom}</td>
-			<td>${h.adresse.rue}<br/>${h.adresse.cp} ${h.adresse.ville} ${h.adresse.pays}</td>
+			<td><a target="blank" href="https://www.google.fr/maps/place/${h.adresse.rue}+${h.adresse.cp}+${h.adresse.ville}+${h.adresse.pays}"> Nous trouver</a></td>
 			<td>${h.prestation}</td>
 			<td>${h.piscine}</td>
 			<td>${h.plage}</td>
@@ -45,6 +45,16 @@
 		</tr>
 	</c:forEach>
 </table>
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
