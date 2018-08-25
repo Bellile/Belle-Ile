@@ -125,7 +125,13 @@ public class LocationVoitureController {
 
 	
 	@RequestMapping(value="/updateLC", method=RequestMethod.POST)
-	public String modifLC(@ModelAttribute("modifLC") LocationVoiture lc, RedirectAttributes rda){
+	public String modifLC(@ModelAttribute("modifLC") LocationVoiture lc, RedirectAttributes rda, MultipartFile file) throws IOException{
+		
+		if(file!=null){
+			lc.setPhoto(file.getBytes());
+		}else{
+			lc.setPhoto(lcService.searchById(lc).getPhoto());
+		}
 		
 		int verif = lcService.update(lc);
 		
@@ -188,24 +194,6 @@ public class LocationVoitureController {
 	}
 	
 	
-	@RequestMapping(value="/image", method=RequestMethod.GET, produces=MediaType.IMAGE_JPEG_VALUE)
-	@ResponseBody
-	public byte[] getLCImage(@RequestParam("pId") int id) throws IOException{
-		LocationVoiture lcIn= new LocationVoiture();
-		lcIn.setId_location(id);		
-		
-		LocationVoiture lcOut = lcService.searchById(lcIn);
-		
-		if(lcOut.getPhoto()==null){
-			
-			return new byte[0];
-		}else{
-			
-			return IOUtils.toByteArray(new ByteArrayInputStream(lcOut.getPhoto()));
-		}
-		
-		
-		
 		
 	}
 	
@@ -229,4 +217,4 @@ public class LocationVoitureController {
 	
 	
 
-}
+

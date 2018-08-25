@@ -24,7 +24,7 @@
 		modelAttribute="modifLC">
 
 
-		<div class="form-group">
+		<div class="form-group" style="display:none">
 			<form:label cssClass="col-sm-2 control-label" path="id_location">Id</form:label>
 			<div class="col-sm-10">
 				<form:input cssClass="form-control" placeholder="Id"
@@ -41,10 +41,11 @@
 		</div>
 
 
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="photo">Photo</form:label>
+		<<div class="form-group">
+			<label Class="col-sm-2 control-label">Photo</label>
 			<div class="col-sm-10">
-				<form:input cssClass="form-control" placeholder="Photo" path="photo" />
+				<input Class="form-control" type="file" name="file"/>
+					
 			</div>
 		</div>
 

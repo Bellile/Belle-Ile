@@ -31,7 +31,7 @@
 		<c:forEach var="lc" items="${listeLC}">
 			<tr>
 				<td>${lc.duree }</td>	
-				<td><img src="${pageContext.request.contextPath}/admin/location/image?pId=${lc.id_location}" style ="max-height: 100px; max-height:100px"/></td>			
+				<td><img src="${pageContext.request.contextPath}/image/locationVoiture?pId=${lc.id_location}" style ="max-height: 100px; max-height:100px"/></td>			
 				<td>${lc.prixJournee }</td>
 				<td>${lc.typeVoiture }</td>
 				
