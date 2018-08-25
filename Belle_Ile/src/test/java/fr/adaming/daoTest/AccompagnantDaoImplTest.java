@@ -52,7 +52,7 @@ public class AccompagnantDaoImplTest {
 		
 		Accompagnant accompOut=accompDao.searchAccompById(accompIn);
 		
-		assertEquals("cccc", accompOut.getNom());
+		assertEquals("aaaa", accompOut.getNom());
 	}
 	
 	
