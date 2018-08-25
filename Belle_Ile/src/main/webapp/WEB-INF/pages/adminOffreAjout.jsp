@@ -22,6 +22,9 @@
 	<c:if test="${not empty msg}">
 		<h1>L'ajout a échoué</h1>
 	</c:if>
+		<c:if test="${not empty msg2}">
+		<h1>Une erreur s'est produit, vérifiez les informations renseignées</h1>
+	</c:if>
 	<h1>Créer une offre de voyage</h1>
 	<form:form cssClass="form-horizontal" method="POST" action="addOffre"
 		modelAttribute="offreAjout" enctype="multipart/form-data">

@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<h1>Modifier une offre de voyage</h1>
+	<h1>Rechercher une offre de voyage par son numéro référence</h1>
 
 
 	<form:form cssClass="form-horizontal" method="POST"
@@ -43,7 +43,7 @@
 		</div>
 	</form:form>
 
-	<c:if test="${not empty resultat}">
+	<c:if test="${resultat==true}">
 		<table class="table table-bordered">
 			<tr>
 				<th>Photo</th>
@@ -61,28 +61,28 @@
 
 			<tr>
 				<td><img
-					src="${pageContext.request.contextPath}/admin/offre/image?pId=${offreSearch.id_offre}"
+					src="${pageContext.request.contextPath}/admin/offre/image?pId=${offreOut.id_offre}"
 					height="50px"></td>
-				<td>${offreSearch.id_offre}<br /> <a
-					href="<c:url value="/admin/offre/deleteOffre?pId=${offreSearch.id_offre}"/>"><i
+				<td>${offreOut.id_offre}<br /> <a
+					href="<c:url value="/admin/offre/deleteOffre?pId=${offreOut.id_offre}"/>"><i
 						class="fas fa-trash-alt"></i></a> | <a
-					href="<c:url value="/admin/offre/updateOffreLink?pId=${offreSearch.id_offre}"/>"><i
+					href="<c:url value="/admin/offre/updateOffreLink?pId=${offreOut.id_offre}"/>"><i
 						class="fas fa-edit"></i></a></td>
 
-				<td>${offreSearch.hotel.adresse.pays }-${offreSearch.hotel.adresse.ville}</td>
-				<td>${offreSearch.hotel.nom }</td>
-				<td>${offreSearch.nbDispo }</td>
-				<td>${offreSearch.nbNuit}</td>
-				<td>${offreSearch.prix }</td>
-				<td>${offreSearch.promo }</td>
-				<td>${offreSearch.vol.id_vol }</td>
-				<th></th>
+				<td>${offreOut.hotel.adresse.pays }-${offreOut.hotel.adresse.ville}</td>
+				<td>${offreOut.hotel.nom }</td>
+				<td>${offreOut.nbDispo }</td>
+				<td>${offreOut.nbNuit}</td>
+				<td>${offreOut.prix }</td>
+				<td>${offreOut.promo }</td>
+				<td>${offreOut.vol.id_vol }</td>
+				<th>${offreOut.location.typeVoiture}</th>
 			</tr>
 		</table>
 	</c:if>
 
 	<c:if test="${not empty msg}">
-		<h1>La modification a échoué</h1>
+		<h1>Il n'y a pas d'offre associé à ce numéro</h1>
 	</c:if>
 
 

@@ -59,8 +59,15 @@ public class OffreController {
 
 	// ----Methode pour ajouter une categorie
 	@RequestMapping(value = "/showAddOffre", method = RequestMethod.GET)
-	public String showAjoutOffre(Model model) {
-		// Specification du model
+	public String showAjoutOffre(Model model, @RequestParam(value = "msg", required = false) String msg,
+			@RequestParam(value = "msg2", required = false) String msg2) {
+		
+		if (msg != null) {
+			model.addAttribute("msg", msg);
+		}
+		if (msg2 != null) {
+			model.addAttribute("msg2", msg2);
+		}
 		model.addAttribute("offreAjout", new Offre());
 
 		return "adminOffreAjout";
@@ -75,12 +82,16 @@ public class OffreController {
 			offre.setPhoto(file.getBytes());
 		}
 
-		Offre offreOut = offreService.addOffre(offre);
-
-		if (offreOut.getId_offre() != 0) {
-			return "redirect:listeOffre";
-		} else {
-			rda.addAttribute("msg", true);
+		try {
+			Offre offreOut = offreService.addOffre(offre);
+			if (offreOut.getId_offre() != 0) {
+				return "redirect:listeOffre";
+			} else {
+				rda.addAttribute("msg", true);
+				return "redirect:showAddOffre";
+			}
+		} catch (Exception e) {
+			rda.addAttribute("msg2", true);
 			return "redirect:showAddOffre";
 		}
 
@@ -157,24 +168,28 @@ public class OffreController {
 
 	// ----Methode pour ajouter une categorie
 	@RequestMapping(value = "/showSearchOffre", method = RequestMethod.GET)
-	public String showRechercherOffre(Model model) {
+	public String showRechercherOffre(Model model, @RequestParam(value = "msg", required = false) String msg) {
 		// Specification du model
+
+		if (msg != null) {
+			model.addAttribute("msg", msg);
+		}
+
 		model.addAttribute("offreSearch", new Offre());
 
 		return "adminOffreSearchById";
 	}
 
 	@RequestMapping(value = "/searchOffre", method = RequestMethod.POST)
-	public String rechercherOffre(@ModelAttribute("offreSearch") Offre offre, RedirectAttributes rda, MultipartFile file)
-			throws IOException {
+	public String rechercherOffre(Model model, @ModelAttribute("offreSearch") Offre offreIn, RedirectAttributes rda,
+			MultipartFile file) throws IOException {
 
-
-		Offre offreOut = offreService.searchOffreById(offre);
+		Offre offreOut = offreService.searchOffreById(offreIn);
 
 		if (offreOut != null) {
-			rda.addAttribute("resultat", true);
-			rda.addAttribute("offreSearch", offreOut);
-			return "redirect:adminOffreSearchById";
+			model.addAttribute("resultat", true);
+			model.addAttribute("offreOut", offreOut);
+			return "adminOffreSearchById";
 		} else {
 			rda.addAttribute("msg", true);
 			return "redirect:showSearchOffre";
