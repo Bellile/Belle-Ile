@@ -98,8 +98,7 @@ public class ClientServiceImpl implements IClientService {
 		// Set From: header field of the header.
 		message.setFrom(new InternetAddress(username));
 
-		// Set To: header field of the header.		
-		
+		// Set To: header field of the header.				
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress("valentinchiron@free.fr")); //"valentinchiron@free.fr"
 
 		// Set Subject: header field
