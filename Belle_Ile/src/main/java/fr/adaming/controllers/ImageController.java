@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fr.adaming.model.Hotel;
 import fr.adaming.model.LocationVoiture;
 import fr.adaming.service.IHotelService;
+import fr.adaming.service.ILocationVoitureService;
 
 @Controller
 @RequestMapping("/image")
@@ -24,6 +25,10 @@ public class ImageController {
 	//Transforamtion de l'association UML en JAVA
 	@Autowired
 	private IHotelService hService;
+	
+	@Autowired
+	private ILocationVoitureService lcService;
+	
 	
 	//Methode pour recuperer les images de hotel
 	@RequestMapping(value="/hotel", method=RequestMethod.GET, produces=MediaType.IMAGE_JPEG_VALUE)
@@ -55,7 +60,7 @@ public class ImageController {
 			return IOUtils.toByteArray(new ByteArrayInputStream(lcOut.getPhoto()));
 		}
 	
-	
+	}
 	
 	
 	
