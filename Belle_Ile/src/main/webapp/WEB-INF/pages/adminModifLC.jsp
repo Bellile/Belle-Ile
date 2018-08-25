@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Modifier un location de voiture</title>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css"/>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
 <script type="text/javascript"

@@ -19,7 +19,7 @@ public class Client extends Personne {
 
 	private String mail;
 	private String mdp;
-	private boolean active;
+	private boolean active =true;
 
 	/** Association uml en java */
 	@OneToMany(mappedBy = "client")
@@ -55,46 +55,61 @@ public class Client extends Personne {
 		this.listeResaClient = listeResaClient;
 		this.role = role;
 	}
-
+	
 	/** Getter setter */
+
+
 	public String getMail() {
 		return mail;
 	}
+
 
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
+
 	public String getMdp() {
 		return mdp;
 	}
+
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
 
-	public List<Reservation> getListeResaClient() {
-		return listeResaClient;
-	}
-
-	public void setListeResaClient(List<Reservation> listeResaClient) {
-		this.listeResaClient = listeResaClient;
-	}
 
 	public boolean isActive() {
 		return active;
 	}
 
+
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+
+	public List<Reservation> getListeResaClient() {
+		return listeResaClient;
+	}
+
+
+	public void setListeResaClient(List<Reservation> listeResaClient) {
+		this.listeResaClient = listeResaClient;
+	}
+
 
 	public Role getRole() {
 		return role;
 	}
 
+
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+
+	
+	
 
 }
