@@ -1,7 +1,6 @@
-package fr.adaming.daoTest;
+package fr.adaming.serviceTest;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -12,27 +11,33 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.adaming.dao.IClientDao;
 import fr.adaming.model.Adresse;
 import fr.adaming.model.Client;
 import fr.adaming.model.Role;
+import fr.adaming.service.IClientService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/application-context.xml" })
-public class ClientDaoImplTest {
+public class ClientServiceImplTest {
 
+	/*
+	 * Association Uml en java
+	 */
 	@Autowired
-	IClientDao cDao;
+	private IClientService cService;
 
 	/*
 	 * Setter pour l'injection dépendance
 	 */
 	
-	public void setcDao(IClientDao cDao) {
-		this.cDao = cDao;
+	public void setcService(IClientService cService) {
+		this.cService = cService;
 	}
-
-	@Test
+	
+	
+	
+	
+	@Test	
 	@Ignore
 	@Transactional
 	@Rollback(true)
@@ -43,9 +48,9 @@ public class ClientDaoImplTest {
 		clTest.setNom("Zuk");
 		clTest.setPrenom("val");
 		
-		cDao.addCl(clTest);
+		cService.addCl(clTest);
 
-		assertEquals(2, cDao.searchAllCl().size());
+		assertEquals(2, cService.searchAllCl().size());
 
 	}
 
@@ -68,9 +73,9 @@ public class ClientDaoImplTest {
 		 cl2Test.setRole(role);
 		 cl2Test.setAdresse(adresse);
 		 
-		 cDao.updateCl(cl2Test);
+		 cService.updateCl(cl2Test);
 		 
-		 assertEquals("aaaaa", cDao.searchByIdCl(cl2Test).getNom());
+		 assertEquals("aaaaa", cService.searchByIdCl(cl2Test).getNom());
 	}
 
 	
@@ -79,7 +84,7 @@ public class ClientDaoImplTest {
 	@Transactional(readOnly=true)	
 	public void testGetAllCL(){
 		
-		assertEquals("Valentin", cDao.searchAllCl().get(0).getPrenom());
+		assertEquals("Valentin", cService.searchAllCl().get(0).getPrenom());
 		
 	}
 	
@@ -91,7 +96,7 @@ public class ClientDaoImplTest {
 		Client cl = new Client();
 		cl.setId(1);
 		
-		assertEquals(1, cDao.searchByIdCl(cl).getId());
+		assertEquals(1, cService.searchByIdCl(cl).getId());
 		
 	}
 	
@@ -102,9 +107,9 @@ public class ClientDaoImplTest {
 		
 		Client cl1=new Client();
 		cl1.setId(2);
-		cDao.deleteCl(cl1);
+		cService.deleteCl(cl1);
 		
-		assertEquals(1, cDao.searchAllCl().size());
+		assertEquals(1, cService.searchAllCl().size());
 		
 		
 	}
@@ -116,5 +121,5 @@ public class ClientDaoImplTest {
 	
 	
 	
-	
+
 }

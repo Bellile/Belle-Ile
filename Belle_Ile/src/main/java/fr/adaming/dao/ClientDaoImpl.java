@@ -58,8 +58,7 @@ public class ClientDaoImpl implements IClientDao {
 
 		Session s = sf.getCurrentSession();
 
-		String req = "UPDATE Client cl SET cl.mail=:pMail, cl.mdp=:pMdp, cl.nom=:pNom, cl.prenom=:pPrenom, cl.dn=:pDn, cl.tel=:pTel"
-				+ "cl.adresse.rue=:pRue, cl.adresse.cp=:pCp, cl.adresse.ville=:pVille, cl.adresse.pays=:pPays WHERE cl.id=:pId";
+		String req = "UPDATE Client cl SET cl.mail=:pMail, cl.mdp=:pMdp, cl.nom=:pNom, cl.prenom=:pPrenom, cl.dn=:pDn, cl.tel=:pTel, cl.adresse.rue=:pRue, cl.adresse.cp=:pCp, cl.adresse.ville=:pVille, cl.adresse.pays=:pPays WHERE cl.id=:pId";
 
 		Query query = s.createQuery(req);
 
@@ -97,7 +96,7 @@ public class ClientDaoImpl implements IClientDao {
 		
 		Session s = sf.getCurrentSession();
 		
-		String req ="Select From Client cl Where cl.id=:pId";
+		String req ="From Client cl Where cl.id=:pId";
 		
 		Query query=s.createQuery(req);
 		

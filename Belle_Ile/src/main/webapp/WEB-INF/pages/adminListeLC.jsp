@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>afficher liste location voiture</title>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css"/>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
 <script type="text/javascript"
@@ -29,10 +30,11 @@
 		</tr>
 		<c:forEach var="lc" items="${listeLC}">
 			<tr>
-				<td>${lc.duree }</td>
-				<td>${lc.photo }</td>
+				<td>${lc.duree }</td>	
+				<td><img src="${pageContext.request.contextPath}/admin/location/image?pId=${lc.id_location}" style ="max-height: 100px; max-height:100px"/></td>			
 				<td>${lc.prixJournee }</td>
 				<td>${lc.typeVoiture }</td>
+				
 
 				<td><a href='<c:url value="/admin/location/modifLCLink?pId=${lc.id_location}"></c:url>'>Modifier</a>
 					| <a href='<c:url value="/admin/location/supprLCLink/${lc.id_location}"></c:url>'>Supprimer</a></td>

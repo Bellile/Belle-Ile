@@ -40,12 +40,12 @@
 		<tr>
 			<th>ID</th>
 			<th>Durée</th>
-			<td>Photo }</td>
+			<td>Photo</td>
 			<th>Prix Journée</th>
 			<th>Type de voiture</th>
 		</tr>
 		<tr>
-			<td>${lcFind.id }</td>
+			<td>${lcFind.id_location }</td>
 			<td>${lcFind.duree }</td>
 			<td>${lcFind.photo }</td>
 			<td>${lcFind.prixJournee }</td>
