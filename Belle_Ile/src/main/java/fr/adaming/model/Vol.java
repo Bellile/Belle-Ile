@@ -57,7 +57,7 @@ public class Vol implements Serializable{
 	/*
 	 * Association avec la classe offre
 	 */
-	@OneToOne
+	@OneToOne(mappedBy="vol")
 	private Offre offre;
 	
 	//Constructeur

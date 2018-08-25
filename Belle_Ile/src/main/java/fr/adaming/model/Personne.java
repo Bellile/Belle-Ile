@@ -23,7 +23,7 @@ public abstract class Personne {
 	 */
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	protected int id;
 	protected String nom;

@@ -25,7 +25,7 @@ public class AccompagnantServiceImpl implements IAccompagnantService {
 	}
 
 	@Override
-	public Accompagnant searchAccompByIdResa(Reservation resa) {
+	public List<Accompagnant> searchAccompByIdResa(Reservation resa) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -11,7 +11,7 @@ public interface IAccompagnantService {
 	
 	public Accompagnant searchAccompById(Accompagnant accomp);
 	
-	public Accompagnant searchAccompByIdResa (Reservation resa);
+	public List<Accompagnant> searchAccompByIdResa (Reservation resa);
 	
 	public Accompagnant addAccomp(Accompagnant accomp, Reservation resa);
 	
