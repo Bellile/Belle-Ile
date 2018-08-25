@@ -21,6 +21,11 @@
 <body>
 
 	<h1>Liste des offres de voyages</h1>
+		
+		<c:if test="${not empty msg}">
+			<h1>Une erreur s'est produite</h1>
+		</c:if>
+
 
 	<table class="table table-bordered">
 		<tr>
@@ -50,7 +55,7 @@
 				<td>${o.nbNuit}</td>
 				<td>${o.prix }</td>
 				<td>${o.promo }</td>
-				<td>${o.vol.id_vol }</td>
+				<td><a href="<c:url value="/admin/vol/searchVolLink?pId=${o.vol.id_vol}"/>">${o.vol.id_vol }</a></td>
 				<th></th>
 
 

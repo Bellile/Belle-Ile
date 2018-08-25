@@ -45,7 +45,7 @@
 			</div>
 
 			<div class="form-group">
-				<form:label cssClass="col-sm-2 control-label" path="depart">Aéroport de départ</form:label>
+				<form:label cssClass="col-sm-2 control-label" path="depart">Aéroport de retour</form:label>
 				<div class="col-sm-10">
 					<form:input cssClass="form-control"
 						placeholder="aéroport de départ" path="depart" />
@@ -53,7 +53,7 @@
 			</div>
 
 			<div class="form-group">
-				<form:label cssClass="col-sm-2 control-label" path="dArrivee">Date d'arrivée</form:label>
+				<form:label cssClass="col-sm-2 control-label" path="dArrivee">Date du retour</form:label>
 				<div class="col-sm-10">
 					<form:input type="date" cssClass="form-control"
 						placeholder="Date d'arrivée" path="dArrivee" />

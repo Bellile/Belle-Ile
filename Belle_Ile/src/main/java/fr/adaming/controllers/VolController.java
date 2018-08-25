@@ -1,5 +1,6 @@
 package fr.adaming.controllers;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.adaming.model.Offre;
 import fr.adaming.model.Vol;
 import fr.adaming.service.IVolService;
 
@@ -137,4 +140,28 @@ public class VolController {
 		modele.addAttribute("volUpdate", volOut);
 		return "adminVolUpdate";
 	}
+	
+	
+
+
+		@RequestMapping(value = "/searchVolLink", method = RequestMethod.GET)
+		public String rechercherOffre(Model model, @RequestParam("pId") int id, RedirectAttributes rda) {
+			Vol volIn=new Vol();
+			volIn.setId_vol(id);
+			
+			Vol volOut = volService.searchVolById(volIn);
+
+			System.out.println(volOut);
+			if (volOut != null) {
+				
+				model.addAttribute("volOut", volOut);
+				return "adminVolSearchById";
+			} else {
+				model.addAttribute("searchVol", true);
+				return "";
+			}
+
+		}
+	
+	
 }
