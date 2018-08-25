@@ -19,12 +19,19 @@
 </head>
 <body>
 
-	<c:if test="${not empty msg}">
-		<h1>L'ajout a échoué</h1>
-	</c:if>
-	<h1>Créer une offre de voyage</h1>
-	<form:form cssClass="form-horizontal" method="POST" action="addOffre"
-		modelAttribute="offreAjout" enctype="multipart/form-data">
+	<h1>Modifier une offre de voyage</h1>
+
+
+	<form:form cssClass="form-horizontal" method="POST"
+		action="updateOffre" modelAttribute="offreUpdate"
+		enctype="multipart/form-data">
+
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="id_offre">Référence du voyage : </form:label>
+			<div class="col-sm-10">
+				<form:label cssClass="control-label" path="id_offre">${offreUpdate.id_offre}</form:label>
+			</div>
+		</div>
 
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="hotel.id_hotel">Destination - Hotel</form:label>
@@ -74,12 +81,14 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Créer</button>
+				<button type="submit" class="btn btn-default">Modifier</button>
 			</div>
 		</div>
 	</form:form>
 
-
+	<c:if test="${not empty msg}">
+		<h1>La modification a échoué</h1>
+	</c:if>
 
 
 </body>

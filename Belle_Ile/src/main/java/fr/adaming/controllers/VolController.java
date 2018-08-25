@@ -110,7 +110,7 @@ public class VolController {
 	}
 
 	@RequestMapping(value = "/updateVol", method = RequestMethod.POST)
-	public String updateEtu(@ModelAttribute("volUpdate") Vol volIn, RedirectAttributes rda) {
+	public String updateVol(@ModelAttribute("volUpdate") Vol volIn, RedirectAttributes rda) {
 
 		// appel de la méthode service pour ajouter l'étudiant
 		int verif = volService.updateVol(volIn);
@@ -127,8 +127,7 @@ public class VolController {
 
 	@RequestMapping(value = "/updateVolLink")
 	public String updateLien(Model modele, @RequestParam("pId") int id, RedirectAttributes rda) {
-		// synthaxe query param: pour récupérer via <a href="<c:url
-		// value="/etudiant/updateLink?pId=${e.id_etu}"/>"></a>
+
 
 		Vol volIn = new Vol();
 		volIn.setId_vol(id);

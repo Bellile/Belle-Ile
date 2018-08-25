@@ -24,18 +24,21 @@
 
 		<h1>${msg }</h1>
 
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="dDepart">Date de départ</form:label>
-			<div class="col-sm-10">
-				<form:input type="date" cssClass="form-control"
-					placeholder="Date de départ" path="dDepart" />
-			</div>
-		</div>
 
+		<h1>Conditions de voyages</h1>
 
 
 		<form:form cssClass="form-horizontal" method="POST" action="addVol"
 			modelAttribute="volAjout">
+
+			<div class="form-group">
+				<form:label cssClass="col-sm-2 control-label" path="dDepart">Date de départ</form:label>
+				<div class="col-sm-10">
+					<form:input type="date" cssClass="form-control"
+						placeholder="Date de départ" path="dDepart" />
+				</div>
+			</div>
+			
 			<div class="form-group">
 				<form:label cssClass="col-sm-2 control-label" path="depart">Aéroport de départ</form:label>
 				<div class="col-sm-10">

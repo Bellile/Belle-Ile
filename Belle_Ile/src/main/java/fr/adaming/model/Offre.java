@@ -36,7 +36,7 @@ public class Offre implements Serializable {
 	@JoinColumn(name = "vol_id", referencedColumnName = "id_vol", nullable=true)
 	private Vol vol;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name = "hotel_id", referencedColumnName = "id_hotel",nullable=true)
 	private Hotel hotel;
 
