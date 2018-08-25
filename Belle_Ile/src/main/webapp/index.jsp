@@ -9,7 +9,9 @@
 <body>
 
 
-
+<%
+		response.sendRedirect("accueil/showAccueil");
+	%>
 
 
 </body>
