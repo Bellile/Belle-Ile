@@ -21,9 +21,9 @@
 </head>
 <body>
 
-<<<<<<< HEAD
+
 <%@ include file="../../resources/template/header.html"%>
-=======
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -31,9 +31,7 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
->>>>>>> branch 'master' of https://github.com/Bellile/Belle-Ile.git
 
-<<<<<<< HEAD
 <br/>
 <br/>
 
@@ -50,12 +48,12 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active" style="max-height: 500px; min-height: 500px">
-      <h1>Salut</h1>
+      
     </div>
 
-	<c:forEach var="h" items="${liste}">
-    	<div class="item" style="max-height: 500px; min-height: 500px; padding-left: 25%; padding-right: 25%">
-      		<img src="${pageContext.request.contextPath}/image/hotel?pId=${h.id_hotel}"  style="max-height: 400px;">
+	<c:forEach var="h" items="${listeHotel}">
+    	<div class="item" style="max-height: 500px; min-height: 500px; padding-left: 40%; padding-right: 40%">
+      		<img src="${pageContext.request.contextPath}/image/hotel?pId=${h.id_hotel}"  style="max-height: 400px; padding-top: 150px">
     		<h3>"${h.nom}"</h3>
     	</div>
     </c:forEach>
@@ -80,70 +78,18 @@
 
 
 <div class="row">
+<c:forEach var="o" items="${listeOffre}">
   <div class="col-md-4">
     <div class="thumbnail">
-      <a href="/w3images/lights.jpg">
-        <img src="${pageContext.request.contextPath}/image/hotel?pId=${h.id_hotel}" style="width:100%">
+      <a href="">
+        <img src="${pageContext.request.contextPath}/image/offre?pId=${o.id_offre}" style="width:100%">
         <div class="caption">
           <p>Lorem ipsum...</p>
         </div>
       </a>
     </div>
-  </div>
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <a href="/w3images/nature.jpg">
-        <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">
-        <div class="caption">
-          <p>Lorem ipsum...</p>
-        </div>
-      </a>
     </div>
-  </div>
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <a href="/w3images/fjords.jpg">
-        <img src="/w3images/fjords.jpg" alt="Fjords" style="width:100%">
-        <div class="caption">
-          <p>Lorem ipsum...</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <a href="/w3images/lights.jpg">
-        <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
-        <div class="caption">
-          <p>Lorem ipsum...</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <a href="/w3images/nature.jpg">
-        <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">
-        <div class="caption">
-          <p>Lorem ipsum...</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <a href="/w3images/fjords.jpg">
-        <img src="/w3images/fjords.jpg" alt="Fjords" style="width:100%">
-        <div class="caption">
-          <p>Lorem ipsum...</p>
-        </div>
-      </a>
-    </div>
-  </div>
+  </c:forEach>   
 </div>
 
 <br/>
@@ -158,32 +104,8 @@
 
 
 <%@ include file="../../resources/template/footer.html"%>
-=======
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active" style="max-height: 500px; min-height: 500px">
-      <h1>Salut</h1>
-    </div>
->>>>>>> branch 'master' of https://github.com/Bellile/Belle-Ile.git
 
-	<c:forEach var="h" items="${liste}">
-    	<div class="item" style="max-height: 500px; min-height: 500px; padding-left: 25%; padding-right: 25%">
-      		<img src="${pageContext.request.contextPath}/image/hotel?pId=${h.id_hotel}"  style="max-height: 400px;">
-    		<h3>"${h.nom}"</h3>
-    	</div>
-    </c:forEach>
-  </div>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 
 
 </body>
