@@ -21,7 +21,7 @@
 <h1>Liste des offres de voyages</h1>
 		
 		<c:if test="${not empty msg}">
-			<h1>Une erreur s'est produite</h1>
+			<h1>Une erreur c'est produite</h1>
 		</c:if>
 
 
