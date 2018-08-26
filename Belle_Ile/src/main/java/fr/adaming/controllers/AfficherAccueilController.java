@@ -8,33 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.adaming.model.Offre;
-import fr.adaming.service.IOffreService;
+import fr.adaming.model.Hotel;
+import fr.adaming.service.IHotelService;
 
 @Controller
 @RequestMapping("/accueil")
 public class AfficherAccueilController {
-
-	/**
-	 * Attribut pour l'injection de dépendance
-	 */
+	
 	@Autowired
-	private IOffreService offreService;
-
-	/**
-	 * Setter pour l'injection dépendance
-	 * 
-	 * @param offreService
-	 */
-	public void setOffreService(IOffreService offreService) {
-		this.offreService = offreService;
+	private IHotelService hService;
+	
+	@RequestMapping(value="/showAccueil", method=RequestMethod.GET)
+	private ModelAndView affichAccueil(){
+		//Récupération de la liste des catégories
+		List<Hotel> list = hService.searchAllHotel();
+		
+		return new ModelAndView("accueil", "liste", list);
 	}
-
-	@RequestMapping(value = "/showAccueil", method = RequestMethod.GET)
-	private ModelAndView affichAccueil() {
-		List<Offre> listeOffre = offreService.searchAllOffre();
-
-		return new ModelAndView("accueil", "listeOffre", listeOffre);
-	}
+	
+	
+	
+	
 
 }
