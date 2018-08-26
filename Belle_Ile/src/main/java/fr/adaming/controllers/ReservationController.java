@@ -76,6 +76,7 @@ public class ReservationController {
 
 		// Client a récupérer dans la session
 		cl.setId(1);
+		
 		Reservation resaCl = new Reservation();
 		resaCl.setClient(cl);
 		resaCl.setOffre(offreOut);
