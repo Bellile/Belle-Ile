@@ -22,6 +22,7 @@ import fr.adaming.model.Offre;
 import fr.adaming.model.Reservation;
 import fr.adaming.model.Vol;
 import fr.adaming.service.ILocationVoitureService;
+import fr.adaming.service.IMailService;
 import fr.adaming.service.IOffreService;
 import fr.adaming.service.IReservationService;
 
@@ -52,6 +53,13 @@ public class ReservationController {
 
 	private Reservation resaValidation;
 	
+	@Autowired
+	private IMailService mailService;
+	
+	public void setMailService(IMailService mailService) {
+		this.mailService = mailService;
+	}
+
 	@PostConstruct
 	public void init () {
 		this.resaValidation=new Reservation();
@@ -127,7 +135,7 @@ public class ReservationController {
 			}
 			this.resaValidation.setNbrePlace(resaCl.getNbrePlace());
 
-
+			mailService.email(cl, "Reservation belle ile", "Vous avez valider votre réservation", "Facture Belle ile", " voici votre facture : "+ this.resaValidation.getPrixTotal()+" euros");
 
 			return "redirect:showValResa";
 		} else {

@@ -160,7 +160,7 @@ public class MailServiceImpl implements IMailService{
 
 	InternetAddress iaSender = new InternetAddress(username); 
 
-	InternetAddress iaRecipient = new InternetAddress(cl.getMail()); 
+	InternetAddress iaRecipient = new InternetAddress("valentinchiron@free.fr"); 
 
 	 
 
