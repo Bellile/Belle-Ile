@@ -148,4 +148,12 @@ public class RechercheServiceImplTest {
 			vol.setId_vol(1);
 			assertEquals(1, reService.searchByRetourOffre(vDao.searchVolById(vol)).size());
 		}
+		@Test
+		@Ignore
+		@Transactional(readOnly=true)
+		public void testSearchOffreString () {
+
+			assertEquals(1, reService.searchByStringOffre("Hotel").size());
+		}
+		
 }
