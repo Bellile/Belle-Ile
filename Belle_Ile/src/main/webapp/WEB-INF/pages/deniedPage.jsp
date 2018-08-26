@@ -9,6 +9,6 @@
 <body>
 <h1>Vous n'êtes pas autorisé à consulter cette page</h1>
 
-<a href="${pageContext.request.contextPath }/admin/accueil">Reessayer</a>
+<a href="javascript:history.go(-1)">Reessayer</a>
 </body>
 </html>
