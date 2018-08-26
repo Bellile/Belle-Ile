@@ -13,8 +13,14 @@ public class RechercheController {
 	//Transformation de l'association UML en JAVA
 	private IRechercheService rService;
 
+	
 	public void setrService(IRechercheService rService) {
 		this.rService = rService;
 	}
 	
+	@RequestMapping("/map")
+	public String affMap() {
+		
+		return "map";
+	}
 }
