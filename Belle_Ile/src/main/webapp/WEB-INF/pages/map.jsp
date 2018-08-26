@@ -14,6 +14,7 @@
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+
 <script type="text/javascript"
 	src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.1.3/build/ol.js"></script>
 <link rel="stylesheet"
@@ -32,7 +33,7 @@
 <title>MAP</title>
 </head>
 <body>
-	<h2>My Map</h2>
+	<h2>Nos destinations</h2>
 	<div id="map" class="map"></div>
 	<script type="text/javascript">
 		var map = new ol.Map({
@@ -45,6 +46,22 @@
 				zoom : 4
 			})
 		});
+
+		var marker = new ol.Feature({
+			  geometry: new ol.geom.Point(
+			    ol.proj.fromLonLat([ 37.41, 8.82 ])
+			  ),// Cordinates of New York's Town Hall
+			});
+		
+		var vectorSource = new ol.source.Vector({
+			  features: [marker]
+			});
+		
+		var markerVectorLayer = new ol.layer.Vector({
+			  source: vectorSource,
+			});
+			map.addLayer(markerVectorLayer);
+
 	</script>
 
 </body>
