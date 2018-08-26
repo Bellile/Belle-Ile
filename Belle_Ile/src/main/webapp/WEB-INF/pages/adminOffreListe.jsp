@@ -55,6 +55,7 @@
 				<td>${o.nbNuit}</td>
 				<td>${o.prix }</td>
 				<td>${o.promo }</td>
+				<td>${o.vol.dDepart }</td>
 				<td><a href="<c:url value="/admin/vol/searchVolLink?pId=${o.vol.id_vol}"/>">${o.vol.id_vol }</a></td>
 				<th></th>
 
