@@ -24,6 +24,9 @@
 
 <%@ include file="../../resources/template/header.html"%>
 
+
+
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -32,8 +35,6 @@
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
 
-<br/>
-<br/>
 
 
 

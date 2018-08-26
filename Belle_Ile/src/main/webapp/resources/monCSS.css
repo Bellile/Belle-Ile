@@ -1,9 +1,17 @@
-
+*{
+	
+	background-color: pink;
+	
+	
+}
 
 
 /*header*/
 
+header{
 
+	background-color: pink;
+}
 
 .row{
 	 position: relative;
@@ -20,11 +28,15 @@
  
 footer{
 
-background:#ccc;
 
-position: relative;
+
+position: absolute;
+
+
+margin-left: auto;
+margin-right: auto;
 	
-
+width: 100%;
 }
   
 
