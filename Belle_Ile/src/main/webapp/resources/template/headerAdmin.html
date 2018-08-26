@@ -1,0 +1,101 @@
+<div class=container>
+
+
+
+
+	<div class="col-sm-12 control-label">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"
+			style="font-size: 16px;">
+			<ul class="nav nav-tabs">
+
+				<li role=presentation><a href=adminAccueil.jsp class="header">Accueil</a></li>
+
+				<li role="presentation" class="dropdown"><a class="header"
+					class="dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button" aria-haspopup="true" aria-expanded="false"
+					class="header"> Gestion catégorie </a>
+					<ul class="dropdown-menu">
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/cat/listeCat">Liste
+								catégorie</a></li>
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/cat/showAddCat">Ajouter
+								une catégorie</a></li>
+
+					</ul></li>
+
+				<li role="presentation" class="dropdown"><a class="header"
+					class="dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button" aria-haspopup="true" aria-expanded="false">
+						Gestion hôtel </a>
+					<ul class="dropdown-menu">
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/hot/listeHotel">Liste
+								des hôtels</a></li>
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/hot/showAddHotel">Créer
+								un hôtel</a></li>
+					</ul></li>
+
+				<li role="presentation" class="header" class="dropdown"><a
+					class="header" class="dropdown-toggle" data-toggle="dropdown"
+					href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Gestion voitures de location </a>
+					<ul class="dropdown-menu">
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/location/listLC">Liste
+								des voitures de location</a></li>
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/location/showAddLC">Créer
+								une voiture de location</a></li>
+
+					</ul></li>
+
+				<li role="presentation" class="header" class="dropdown"><a
+					class="header" class="dropdown-toggle" data-toggle="dropdown"
+					href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Gestion offres de voyage </a>
+					<ul class="dropdown-menu">
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/offre/listeOffre">Liste
+								des offres</a></li>
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/offre/listeOffreEnCours">Liste
+								des offres en cours</a></li>
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/location/showAddLC">Créer
+								une offre</a></li>
+
+					</ul></li>
+
+				<li role="presentation" class="header" class="dropdown"><a
+					class="header" class="dropdown-toggle" data-toggle="dropdown"
+					href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Gestion des vols </a>
+					<ul class="dropdown-menu">
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/vol/listeVol">Liste
+								des vols</a></li>
+
+						<li role=presentation><a
+							href="${pageContext.request.contextPath}/admin/vol/showAddVol">Créer
+								une offre de vol</a></li>
+
+					</ul></li>
+
+				<li role=presentation class=pull-right><a href=pageAccueil.jsp
+					style="color: red;">Déconnection</a></li>
+
+				<li class=pull-right><a
+					style="color: #000000; font-style: italic;">Conseiller :
+						${conseilSession.id_conseiller} -- ${conseilSession.nom}
+						${conseilSession.prenom }</a></li>
+			</ul>
+
+		</nav>
+
+	</div>
+
+
+</div>
+

@@ -37,6 +37,25 @@ public class AfficherAccueilController {
 		this.offreService = offreService;
 	}
 
+	
+	@RequestMapping(value = "/listeOffreEnCours", method = RequestMethod.GET)
+	public ModelAndView afficheListeOffreEnCours() {
+		Date date = new Date();
+		Vol vol = new Vol();
+		vol.setdDepart(date);
+
+		List<Offre> listeOffre = offreService.searchAllOffre();
+		List<Offre> listeOffreEnCours = new ArrayList<Offre>();
+
+		for (Offre o : listeOffre) {
+			if (o.getVol().getdDepart().after(date) && o.getNbDispo() > 0) {
+				listeOffreEnCours.add(o);
+			}
+		}
+		return new ModelAndView("adminOffreListe", "listeOffre", listeOffreEnCours);
+	}
+	
+	
 	@RequestMapping(value = "/showAccueile", method = RequestMethod.GET)
 	public ModelAndView affichAccueil() {
 		// Récupération de la liste des catégories

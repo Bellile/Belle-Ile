@@ -2,6 +2,8 @@ package fr.adaming.controllers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,6 +58,23 @@ public class OffreController {
 	public ModelAndView afficheListeOffre() {
 		List<Offre> listeOffre = offreService.searchAllOffre();
 		return new ModelAndView("adminOffreListe", "listeOffre", listeOffre);
+	}
+	
+	@RequestMapping(value = "/listeOffreEnCours", method = RequestMethod.GET)
+	public ModelAndView afficheListeOffreEnCours() {
+		Date date = new Date();
+		Vol vol = new Vol();
+		vol.setdDepart(date);
+
+		List<Offre> listeOffre = offreService.searchAllOffre();
+		List<Offre> listeOffreEnCours = new ArrayList<Offre>();
+
+		for (Offre o : listeOffre) {
+			if (o.getVol().getdDepart().after(date) && o.getNbDispo() > 0) {
+				listeOffreEnCours.add(o);
+			}
+		}
+		return new ModelAndView("adminOffreListe", "listeOffre", listeOffreEnCours);
 	}
 
 	// ----Methode pour ajouter une categorie
