@@ -7,8 +7,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title> </title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
+<title></title>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -17,8 +18,11 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
-
-Reservation validé
+	Merci pour votre réservation.
+	<br /> Nous vous souhaitons un agréable voyage.
+	<br /> Retour vers la liste des offres en cours :
+	<a href="<c:url value="/resa/listeOffreEnCours"/>">Effectuer une
+		nouvelle réservation</a>
 
 
 

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.adaming.model.Hotel;
 import fr.adaming.model.LocationVoiture;
+import fr.adaming.model.Offre;
 import fr.adaming.service.IHotelService;
 import fr.adaming.service.ILocationVoitureService;
+import fr.adaming.service.IOffreService;
 
 @Controller
 @RequestMapping("/image")
@@ -29,6 +31,8 @@ public class ImageController {
 	@Autowired
 	private ILocationVoitureService lcService;
 	
+	@Autowired
+	private IOffreService offreService;
 	
 	//Methode pour recuperer les images de hotel
 	@RequestMapping(value="/hotel", method=RequestMethod.GET, produces=MediaType.IMAGE_JPEG_VALUE)
@@ -60,6 +64,23 @@ public class ImageController {
 			return IOUtils.toByteArray(new ByteArrayInputStream(lcOut.getPhoto()));
 		}
 	
+	}
+	
+	// Methode pour recuperer les images de hotel
+	@RequestMapping(value = "/offre", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] getOffreImage(@RequestParam("pId") int id) throws IOException {
+		Offre offreIn = new Offre();
+		offreIn.setId_offre(id);
+		Offre offreOut = offreService.searchOffreById(offreIn);
+
+		if (offreOut.getPhoto() == null) {
+			return new byte[0];
+		} else {
+			
+			return IOUtils.toByteArray(new ByteArrayInputStream(offreOut.getPhoto()));
+		}
+
 	}
 	
 	

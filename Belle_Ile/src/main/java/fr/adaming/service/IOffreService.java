@@ -28,7 +28,7 @@ public interface IOffreService {
 	 * @param Offre : le nouvel objet avec modification
 	 * @return 1 si l'objet a été modifié, 0 sinon
 	 */
-	public int updateOffre(Offre offre, Hotel hotel, LocationVoiture location, Vol vol );
+	public int updateOffre(Offre offre, Hotel hotel, Vol vol );
 	
 	/**<b>searchAll</b>
 	 * Méthode pour récupérer tous les objets Offre dans la base de données

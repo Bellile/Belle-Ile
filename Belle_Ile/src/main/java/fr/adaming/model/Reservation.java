@@ -33,6 +33,10 @@ public class Reservation implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="offre_id", referencedColumnName="id_offre")
 	private Offre offre;
+	
+	@OneToOne
+	@JoinColumn(name = "location_id", referencedColumnName = "id_location",nullable=true)
+	private LocationVoiture location;
 
 	// attribut
 	@Id
@@ -97,6 +101,14 @@ public class Reservation implements Serializable {
 
 	public void setNbrePlace(int nbrePlace) {
 		this.nbrePlace = nbrePlace;
+	}
+
+	public LocationVoiture getLocation() {
+		return location;
+	}
+
+	public void setLocation(LocationVoiture location) {
+		this.location = location;
 	}
 
 }

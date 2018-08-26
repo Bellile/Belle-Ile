@@ -61,7 +61,7 @@ public class OffreController {
 	@RequestMapping(value = "/showAddOffre", method = RequestMethod.GET)
 	public String showAjoutOffre(Model model, @RequestParam(value = "msg", required = false) String msg,
 			@RequestParam(value = "msg2", required = false) String msg2) {
-		
+
 		if (msg != null) {
 			model.addAttribute("msg", msg);
 		}
@@ -131,18 +131,13 @@ public class OffreController {
 			hotelIn.setId_hotel(offreIn.getHotel().getId_hotel());
 		}
 
-		LocationVoiture locationIn = new LocationVoiture();
-		if (offreIn.getLocation() != null) {
-			locationIn.setId_location(offreIn.getLocation().getId_location());
-		}
-
 		Vol volIn = new Vol();
 		if (offreIn.getVol() != null) {
 			volIn.setId_vol(offreIn.getVol().getId_vol());
 		}
 
 		// appel de la méthode service pour ajouter l'étudiant
-		int verif = offreService.updateOffre(offreIn, hotelIn, locationIn, volIn);
+		int verif = offreService.updateOffre(offreIn, hotelIn, volIn);
 
 		if (verif != 0) {
 			return "redirect:listeOffre";

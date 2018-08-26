@@ -35,20 +35,16 @@ public class Offre implements Serializable {
 	private byte[] photo;
 
 	@OneToOne
-	@JoinColumn(name = "vol_id", referencedColumnName = "id_vol", nullable=true)
+	@JoinColumn(name = "vol_id", referencedColumnName = "id_vol", nullable = true)
 	private Vol vol;
 
 	@ManyToOne
-	@JoinColumn(name = "hotel_id", referencedColumnName = "id_hotel",nullable=true)
+	@JoinColumn(name = "hotel_id", referencedColumnName = "id_hotel", nullable = true)
 	private Hotel hotel;
 
-	@OneToOne
-	@JoinColumn(name = "location_id", referencedColumnName = "id_location",nullable=true)
-	private LocationVoiture location;
-
-	@OneToMany(mappedBy="offre")
+	@OneToMany(mappedBy = "offre")
 	private List<Reservation> listResa;
-	
+
 	// Constructeur
 	public Offre() {
 		super();
@@ -136,14 +132,6 @@ public class Offre implements Serializable {
 
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
-	}
-
-	public LocationVoiture getLocation() {
-		return location;
-	}
-
-	public void setLocation(LocationVoiture location) {
-		this.location = location;
 	}
 
 	public List<Reservation> getListResa() {
