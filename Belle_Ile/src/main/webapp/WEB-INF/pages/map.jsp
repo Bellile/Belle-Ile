@@ -34,6 +34,7 @@
 </head>
 <body>
 	<h2>Nos destinations</h2>
+	
 	<div id="map" class="map"></div>
 	<script type="text/javascript">
 		var map = new ol.Map({
@@ -46,23 +47,43 @@
 				zoom : 4
 			})
 		});
-
 		var marker = new ol.Feature({
-			  geometry: new ol.geom.Point(
-			    ol.proj.fromLonLat([ 37.41, 8.82 ])
-			  ),// Cordinates of New York's Town Hall
-			});
-		
+			geometry: new ol.geom.Point(
+			ol.proj.fromLonLat([ 37.41, 8.82 ])),// Cordinates of New York's Town Hall
+		});
+			
 		var vectorSource = new ol.source.Vector({
-			  features: [marker]
-			});
-		
+			features: [marker]
+		});
+	
 		var markerVectorLayer = new ol.layer.Vector({
-			  source: vectorSource,
+			source: vectorSource,
+		});
+		map.addLayer(markerVectorLayer);
+	</script>
+	<div id="boucle" style="display: none">"${coor}"</div>
+	<c:forEach var="d" items="${coor}">
+		<script type="text/javascript">
+		var x = document.getElementById("boucle");
+		var donnee = x.innerText;
+		console.log(donnee);
+		var coor = new Object();
+		coor.lon = 55;
+		coor.lat = 10;
+		var marker = new ol.Feature({
+				geometry: new ol.geom.Point(
+				ol.proj.fromLonLat([coor.lon, coor.lat])),
+			});
+			
+			var vectorSource = new ol.source.Vector({
+				features: [marker]
+			});
+	
+			var markerVectorLayer = new ol.layer.Vector({
+				source: vectorSource,
 			});
 			map.addLayer(markerVectorLayer);
-
-	</script>
-
+		</script>
+	</c:forEach>
 </body>
 </html>

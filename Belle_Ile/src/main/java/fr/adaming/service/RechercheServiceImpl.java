@@ -1,5 +1,6 @@
 package fr.adaming.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +103,38 @@ public class RechercheServiceImpl implements IRechercheService{
 	public Client searchByMailClient(Client client) {
 		// TODO Auto-generated method stub
 		return rDao.searchByMailClient(client);
+	}
+
+	@Override
+	public List<Offre> searchByStringOffre(String rech) {
+		List<Offre> listOut = new ArrayList<Offre>();
+		List<Offre> listIn = new ArrayList<Offre>();
+		List<Hotel> listHot2 = rDao.searchByAdresseHotel(rech); 
+		List<Hotel> listHot1 = rDao.searchByNameHotel(rech);
+		
+		//Récupération de tous les hotels correspondant à la recherche
+		for (Hotel h:listHot2) {
+			listHot1.add(h);
+		}
+		
+		//Nettoyage des doublons
+		for (int i=0; i<listHot1.size()-1; i++) {
+			for (int j=i+1; j<listHot1.size(); j++) {
+				if (listHot1.get(i).getId_hotel()==listHot1.get(j).getId_hotel()) {
+					listHot1.remove(j);
+				}
+			}
+		}
+		
+		//Récupération des offres pour chaque hotel
+		for (Hotel h:listHot1) {
+			listIn = rDao.searchByHotelOffre(h);
+			for(Offre o:listIn) {
+				listOut.add(o);
+			}
+		}
+		
+		return listOut;
 	}
 
 	

@@ -40,6 +40,13 @@ public interface IRechercheService {
 	 */
 	public List<Offre> searchByHotelOffre(Hotel hotel);
 	
+	/**<b>searchByString</b>
+	 * Méthode pour récupérer une liste de Offre selon un hotel dans la base de données
+	 * @param l'intitulé de la recherche
+	 * @return la liste des offres dont la recherche correspond à la recherche
+	 */
+	public List<Offre> searchByStringOffre(String rech);
+	
 	/**<b>searchByDepart</b>
 	 * Méthode pour récupérer une liste de Offre selon un vol dans la base de données
 	 * @param Le vol de départ du voyage
