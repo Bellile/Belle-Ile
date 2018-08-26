@@ -18,7 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
-
+<%@ include file="../../resources/template/headerAdmin.html"%>
 	<h1>Modifier une offre de voyage</h1>
 
 

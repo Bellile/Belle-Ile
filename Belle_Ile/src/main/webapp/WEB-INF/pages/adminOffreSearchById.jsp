@@ -18,7 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
-
+<%@ include file="../../resources/template/headerAdmin.html"%>
 	<h1>Rechercher une offre de voyage par son numéro référence</h1>
 
 

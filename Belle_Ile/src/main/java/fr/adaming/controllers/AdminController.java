@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/admin")
 public class AdminController {
 
-	@RequestMapping(value = "/listeOffre", method = RequestMethod.GET)
+	@RequestMapping(value = "/accueil", method = RequestMethod.GET)
 	public String afficheListeOffre() {
 		
 		return "adminAccueil";

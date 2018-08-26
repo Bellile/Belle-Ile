@@ -52,7 +52,7 @@ public class AfficherAccueilController {
 				listeOffreEnCours.add(o);
 			}
 		}
-		return new ModelAndView("adminOffreListe", "listeOffre", listeOffreEnCours);
+		return new ModelAndView("offreEnCours", "listeOffreEnCours", listeOffreEnCours);
 	}
 	
 	

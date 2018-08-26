@@ -20,7 +20,7 @@
 </head>
 <body>
 
-
+<%@ include file="../../resources/template/headerAdmin.html"%>
 
 
 	<table class="table">

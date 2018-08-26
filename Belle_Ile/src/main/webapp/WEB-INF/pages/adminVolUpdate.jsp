@@ -18,7 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
-
+<%@ include file="../../resources/template/headerAdmin.html"%>
 	<div class="container">
 		<h1>Modifier les informations du vol</h1>
 
