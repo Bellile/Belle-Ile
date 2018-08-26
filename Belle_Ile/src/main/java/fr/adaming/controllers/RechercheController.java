@@ -65,8 +65,8 @@ public class RechercheController {
 		model.addAttribute("listeOffre", listeOffreEnCours);
 		return "offreListe";
 		} else {
-			
-			return "redirect:../accueil/showAccueile";
+			rda.addAttribute("msg", true);
+			return "redirect:../accueil/showAccueil";
 		}
 	}
 }

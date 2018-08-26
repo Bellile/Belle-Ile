@@ -31,8 +31,9 @@
 			aria-label="Search" name="pRech" id="rech">
 		<button class="btn btn-primary btn-md" type="submit">Search</button>
 	</form>
-	<h1 >${msg}</h1>
-
+	<c:if test="${not empty msg}">
+		<h3 >Aucune offre ne correspond à votre recherche.</h3>
+	</c:if>
 
 
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -90,16 +91,30 @@
 
 		<div class="row">
 			<c:forEach var="o" items="${listeOffre}">
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/image/offre?pId=${o.id_offre}"
-							style="width: 100%">
-							<div class="caption">
-								<p>Lorem ipsum...</p>
-							</div>
-						</a>
+				<div class="col-md-4" >
+				<div class="thumbnail" style="background: linear-gradient(to top right,rgb(0,0,0, 0.5), rgb(105,105,105, 0.15), rgb(0, 0, 0, 1)) no-repeat; border: 1px solid grey; border-radius: 12px">
+					<a href=""> <img
+						src="${pageContext.request.contextPath}/image/offre?pId=${o.id_offre}"
+						style="width: 100%">
+					</a>
+					<a href="<c:url value="/resa/showResaLink?pId=${o.id_offre}"/>">réserver</a>
+					<div class="caption" style="display: block; border-radius: 12px">
+						<div style="display: inline">
+							<label>Destination : ${o.hotel.adresse.pays}</label>
+							<label>Hotel : ${o.hotel.nom}</label>
+						</div>
+						<div>
+						<label>Place(s) disponible(s) : ${o.nbDispo} </label>
+						</div>
+						<div>
+						<label>Nombre de nuit(s) : ${o.nbNuit}</label>
+						</div>
+						<label>Prix initial du séjour : ${o.prix} euros</label>
+						<label style="border: 1px solid grey">PROMO : ${o.promo*100} %</label>
+						<label>Prix après réduction : ${o.prix - o.prix*o.promo} euros</label>
+						<label>Depart : de ${o.vol.depart} le <a href="<c:url value="/accueil/searchVolLink?pId=${o.vol.id_vol}"/>">${o.vol.dDepart}</a></label>
 					</div>
+				</div>
 				</div>
 			</c:forEach>
 		</div>
