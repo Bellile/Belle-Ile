@@ -153,7 +153,7 @@ public class RechercheServiceImplTest {
 		@Transactional(readOnly=true)
 		public void testSearchOffreString () {
 
-			assertEquals(1, reService.searchByStringOffre("Hotel").size());
+			assertEquals(1, reService.searchByStringOffre("Palm").size());
 		}
 		
 }

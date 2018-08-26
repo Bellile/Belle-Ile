@@ -30,6 +30,8 @@
 						src="${pageContext.request.contextPath}/image/offre?pId=${o.id_offre}"
 						style="width: 100%">
 					</a>
+					<a href="<c:url value="/resa/showResaLink?pId=${o.id_offre}"/>">réserver</a>
+					<div>${o.hotel.nom}</div>
 				</div>
 			</div>
 		</c:forEach>

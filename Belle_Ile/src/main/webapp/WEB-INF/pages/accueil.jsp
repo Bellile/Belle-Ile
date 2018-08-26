@@ -26,14 +26,12 @@
 	<%@ include file="../../resources/template/header.html"%>
 
 
-	<form class="form-inline my-2 my-lg-0" id="recherche">
+	<form class="form-inline my-2 my-lg-0" id="recherche" action="../rech/offre?pRech=${rech}" method="GET">
 		<input class="form-control mr-sm-2" type="search" placeholder="Search"
-			aria-label="Search">
+			aria-label="Search" name="pRech" id="rech">
 		<button class="btn btn-primary btn-md" type="submit">Search</button>
 	</form>
-
-
-
+	<h1 >${msg}</h1>
 
 
 
@@ -82,7 +80,7 @@
 				class="sr-only">Next</span>
 			</a>
 		</div>
-
+	</div>
 
 
 

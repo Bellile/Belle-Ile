@@ -22,7 +22,7 @@ import fr.adaming.service.IOffreService;
 @Controller
 @RequestMapping("/accueil")
 public class AfficherAccueilController {
-
+	
 	@Autowired
 	private IHotelService hService;
 
@@ -84,7 +84,6 @@ public class AfficherAccueilController {
 				listeOffreEnCours.add(o);
 			}
 		}
-		
 
 		model.addAttribute("listeOffre", listeOffreEnCours);
 		
