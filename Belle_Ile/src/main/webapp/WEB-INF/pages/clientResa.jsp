@@ -20,16 +20,16 @@
 <body>
 
 	<img
-		src="${pageContext.request.contextPath}/admin/offre/image?pId=${offreOut.id_offre}"
-		height="50px">
-	<br />${offreOut.id_offre}<br />
-	<br />${offreOut.hotel.adresse.pays }-${offreOut.hotel.adresse.ville}
-	<br />${offreOut.hotel.nom }
-	<br />${offreOut.nbDispo }
-	<br />${offreOut.nbNuit}
-	<br />${offreOut.prix }
-	<br />${offreOut.promo }
-	<br />
+		src="${pageContext.request.contextPath}/image/offre?pId=${offreOut.id_offre}"
+		height="200px">
+	<br />Référence de l'offre : ${offreOut.id_offre}<br />
+	<br />Destination ${offreOut.hotel.adresse.pays }-${offreOut.hotel.adresse.ville}
+	<br />Hotel : ${offreOut.hotel.nom }
+	<br />Nombre de place disponible : ${offreOut.nbDispo }
+	<br />Nombre de nuit : ${offreOut.nbNuit}
+	<br />Prix initial du séjour : ${offreOut.prix }
+	<br />Promotion : ${offreOut.promo }
+	<br />Référence de l'offre aérienne :
 	<a
 		href="<c:url value="/admin/vol/searchVolLink?pId=${offreOut.vol.id_vol}"/>">${offreOut.vol.id_vol }</a>
 	<br />

@@ -18,7 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
-
+<%@ include file="../../resources/template/headerAdmin.html"%>
 	<c:if test="${not empty msg}">
 		<h1>L'ajout a échoué</h1>
 	</c:if>

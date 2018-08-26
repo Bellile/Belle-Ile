@@ -20,6 +20,7 @@
 <title> </title>
 </head>
 <body>
+<%@ include file="../../resources/template/headerAdmin.html"%>
 <form:form cssClass="form-horizontal" method="POST" action="updHotel"
 		modelAttribute="hotelModif" enctype="multipart/form-data">
 		<div class="form-group" style="display: none">

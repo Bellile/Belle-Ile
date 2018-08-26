@@ -18,6 +18,7 @@
 <title>Liste Categories</title>
 </head>
 <body>
+<%@ include file="../../resources/template/headerAdmin.html"%>
 <table class="table table-bordered">
 	<tr>
 		<th>Océan</th>

@@ -20,6 +20,7 @@
 <title>Formulaire d'ajout d'une catégorie</title>
 </head>
 <body>
+<%@ include file="../../resources/template/headerAdmin.html"%>
 <h1 >${msg}</h1>
 <form:form cssClass="form-horizontal" method="POST" action="addCat"
 		modelAttribute="catAjout">

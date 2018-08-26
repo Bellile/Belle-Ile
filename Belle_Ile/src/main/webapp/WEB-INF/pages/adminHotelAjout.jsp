@@ -20,6 +20,7 @@
 <title>Formulaire d'ajout d'un hotel</title>
 </head>
 <body>
+<%@ include file="../../resources/template/headerAdmin.html"%>
 <h1 >${msg}</h1>
 <form:form cssClass="form-horizontal" method="POST" action="addHotel"
 		modelAttribute="hotelAjout" enctype="multipart/form-data">

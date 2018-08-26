@@ -20,7 +20,7 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
-
+<%@ include file="../../resources/template/headerAdmin.html"%>
 	<table class="table">
 		<tr>
 			<th>Durée</th>

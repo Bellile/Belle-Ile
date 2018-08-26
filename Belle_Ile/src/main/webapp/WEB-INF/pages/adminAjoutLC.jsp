@@ -20,7 +20,7 @@
 </head>
 <body>
 
-
+<%@ include file="../../resources/template/headerAdmin.html"%>
 	<form:form cssClass="form-horizontal" method="POST" action="addLC"
 		modelAttribute="lcAjout" enctype="multipart/form-data">
 
