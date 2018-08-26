@@ -17,6 +17,7 @@ import fr.adaming.model.Accompagnant;
 import fr.adaming.model.Client;
 import fr.adaming.model.Reservation;
 import fr.adaming.service.IAccompagnantService;
+import fr.adaming.serviceTest.Ign;
 
 //permet de lance
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -40,6 +41,7 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
+	@Ignore
 	@Transactional
 	public void testSearchAllResaSizeListe() {
 		List<Reservation> listeResa = resaDao.searchAllResa();
@@ -48,6 +50,7 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
+	@Ignore
 	@Transactional
 	public void testSearchResaByIdValClient() {
 
@@ -61,6 +64,7 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
+	@Ignore
 	@Transactional
 	public void testAddResaSizeListe() {
 		Client clIn = new Client();
@@ -75,6 +79,7 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
+	@Ignore
 	@Transactional
 	public void testDeleteResaSizeListe() {
 		Client clIn=new Client();
@@ -96,6 +101,7 @@ public class ReservationDaoImplTest {
 	}
 
 	@Test
+	@Ignore
 	@Transactional
 	public void testUpdateResaValClient() {
 
