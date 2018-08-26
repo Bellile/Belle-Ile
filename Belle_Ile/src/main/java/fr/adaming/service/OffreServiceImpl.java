@@ -43,7 +43,7 @@ public class OffreServiceImpl implements IOffreService {
 	}
 
 	@Override
-	public int updateOffre(Offre offre, Hotel hotel, Vol vol) {
+	public int updateOffre(Offre offre) {
 		Offre offreOut = this.searchOffreById(offre);
 
 		offreOut.setNbNuit(offre.getNbNuit());

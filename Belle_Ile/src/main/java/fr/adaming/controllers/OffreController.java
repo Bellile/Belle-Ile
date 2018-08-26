@@ -135,18 +135,21 @@ public class OffreController {
 	@RequestMapping(value = "/updateOffre", method = RequestMethod.POST)
 	public String updateOffre(@ModelAttribute("offreUpdate") Offre offreIn, RedirectAttributes rda) {
 
-		Hotel hotelIn = new Hotel();
+		Offre offreOut=offreService.searchOffreById(offreIn);
+		
 		if (offreIn.getHotel() != null) {
-			hotelIn.setId_hotel(offreIn.getHotel().getId_hotel());
+			//permet de garder l'hotel qui est déjà enregistré s'il n'y a pas de modif 
+			offreIn.setHotel(offreOut.getHotel());
 		}
 
-		Vol volIn = new Vol();
+		
 		if (offreIn.getVol() != null) {
-			volIn.setId_vol(offreIn.getVol().getId_vol());
+			//permet de garder le vol qui est déjà enregistré s'il n'y a pas de modif 
+			offreIn.setVol(offreOut.getVol());
 		}
 
 		// appel de la méthode service pour ajouter l'étudiant
-		int verif = offreService.updateOffre(offreIn, hotelIn, volIn);
+		int verif = offreService.updateOffre(offreIn);
 
 		if (verif != 0) {
 			return "redirect:listeOffre";

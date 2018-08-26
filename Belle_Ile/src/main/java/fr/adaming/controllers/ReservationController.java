@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.LocationVoiture;
 import fr.adaming.model.Offre;
 import fr.adaming.model.Reservation;
 import fr.adaming.model.Vol;
+import fr.adaming.service.ILocationVoitureService;
 import fr.adaming.service.IOffreService;
 import fr.adaming.service.IRechercheService;
 import fr.adaming.service.IReservationService;
@@ -40,17 +42,22 @@ public class ReservationController {
 		this.resaService = resaService;
 	}
 
-	
+	@Autowired
+	private ILocationVoitureService locationService;
+
+	public void setLocationService(ILocationVoitureService locationService) {
+		this.locationService = locationService;
+	}
 
 	@RequestMapping(value = "/listeOffreEnCours", method = RequestMethod.GET)
 	public ModelAndView afficheListeOffreEnCours() {
-		Date date=new Date();
-		Vol vol=new Vol();
+		Date date = new Date();
+		Vol vol = new Vol();
 		vol.setdDepart(date);
-		
+
 		List<Offre> listeOffre = offreService.searchAllOffre();
 		List<Offre> listeOffreEnCours = new ArrayList<Offre>();
-		
+
 		for (Offre o : listeOffre) {
 			System.out.println(o);
 			if (o.getVol().getdDepart().after(date) && o.getNbDispo() > 0) {
@@ -83,6 +90,10 @@ public class ReservationController {
 
 		model.addAttribute("resaCl", resaCl);
 		model.addAttribute("offreOut", offreOut);
+		
+		//pour afficher la liste des locations possible
+		List<LocationVoiture> listeLoc=locationService.searchAllLC();
+		model.addAttribute("listeLoc", listeLoc);
 
 		return "clientResa";
 	}

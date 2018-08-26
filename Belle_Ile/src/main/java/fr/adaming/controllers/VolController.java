@@ -99,7 +99,7 @@ public class VolController {
 			Offre offreOut = offreService.searchOffreById(offre);
 			offreOut.setVol(volOut);
 
-			offreService.updateOffre(offreOut, offreOut.getHotel(), volOut);
+			offreService.updateOffre(offreOut);
 
 			return "redirect:/admin/offre/listeOffre";
 		} else {

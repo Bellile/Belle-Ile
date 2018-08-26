@@ -27,9 +27,9 @@
 		enctype="multipart/form-data">
 
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="id_offre">Référence du voyage : </form:label>
-			<div class="col-sm-10">
-				<form:label cssClass="control-label" path="id_offre">${offreUpdate.id_offre}</form:label>
+			Référence du voyage :<form:label cssClass="col-sm-2 control-label" path="id_offre">${offreUpdate.id_offre}</form:label>
+			<div class="col-sm-10" style="display: none">
+				<form:input cssClass="control-label" path="id_offre"></form:input>
 			</div>
 		</div>
 

@@ -34,12 +34,6 @@
 		href="<c:url value="/admin/vol/searchVolLink?pId=${offreOut.vol.id_vol}"/>">${offreOut.vol.id_vol }</a>
 	<br />
 
-	<br />
-	<br /> Combien de place souhaitez vous réserver ?
-	<br />
-	<br />
-
-
 	<form:form cssClass="form-horizontal" method="POST"
 		action="client/addResa" modelAttribute="resaCl"
 		enctype="multipart/form-data">
@@ -53,12 +47,30 @@
 			</div>
 		</div>
 
+		<br /> Combien de place souhaitez vous réserver ?
+	<br />
+		<br />
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="nbrePlace">Nombre</form:label>
 			<div class="col-sm-10">
 				<form:input cssClass="form-control" placeholder="Nombre de place"
 					path="nbrePlace" />
 			</div>
+		</div>
+
+
+<div class="form-group" >
+			<form:label cssClass="col-sm-2 control-label"
+				path="location.id_location">Souhaitez vous louer un véhicule pour la durée du séjour ?</form:label>
+		</div>
+		<div class="col-sm-2 ">
+			<form:select cssClass="form-control" path="location.id_location">
+				
+				<c:forEach var="loc" items="${listeLoc}">
+					<option value="${loc.id_location}">${loc.typeVoiture} -
+						${loc.prixJournee}</option>
+				</c:forEach>
+			</form:select>
 		</div>
 
 
@@ -71,7 +83,7 @@
 	</form:form>
 
 
-<c:if test="${not empty msg}">
+	<c:if test="${not empty msg}">
 	Il n'y a pas assez de place pour ce voyage
 </c:if>
 

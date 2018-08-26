@@ -1,6 +1,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -26,9 +27,9 @@ public class LocationVoiture implements Serializable {
 
 	@Lob
 	private byte[] photo;
-	
-	@OneToOne(mappedBy="location")
-	private Reservation resa;
+
+	@OneToMany(mappedBy = "location")
+	private List<Reservation> Listeresa;
 
 	// Constructeur
 	public LocationVoiture() {
@@ -93,14 +94,12 @@ public class LocationVoiture implements Serializable {
 		this.photo = photo;
 	}
 
-	public Reservation getResa() {
-		return resa;
+	public List<Reservation> getListeresa() {
+		return Listeresa;
 	}
 
-	public void setResa(Reservation resa) {
-		this.resa = resa;
+	public void setListeresa(List<Reservation> listeresa) {
+		Listeresa = listeresa;
 	}
 
-
-	
 }

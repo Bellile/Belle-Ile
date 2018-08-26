@@ -88,11 +88,9 @@ public class OffreServiceImplTest {
 		
 		Offre offreOut=offreService.searchOffreById(offreIn);
 		offreOut.setNbDispo(20);
+
 		
-		Hotel hotel=new Hotel();
-		Vol vol=new Vol();
-		
-		offreService.updateOffre(offreOut, hotel,  vol);
+		offreService.updateOffre(offreOut);
 		
 		assertEquals (20, offreService.searchOffreById(offreIn).getNbDispo());
 		

@@ -34,10 +34,12 @@ public class Reservation implements Serializable {
 	@JoinColumn(name="offre_id", referencedColumnName="id_offre")
 	private Offre offre;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "location_id", referencedColumnName = "id_location",nullable=true)
 	private LocationVoiture location;
 
+	
+	
 	// attribut
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
