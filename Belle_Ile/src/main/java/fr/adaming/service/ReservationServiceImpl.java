@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IOffreDao;
 import fr.adaming.dao.IReservationDao;
 import fr.adaming.model.Accompagnant;
 import fr.adaming.model.Client;
+import fr.adaming.model.Offre;
 import fr.adaming.model.Reservation;
 
 @Service
@@ -29,6 +31,13 @@ public class ReservationServiceImpl implements IReservationService {
 		this.accompService = accompService;
 	}
 
+	@Autowired
+	private IOffreDao offreDao;
+
+	public void setOffreDao(IOffreDao offreDao) {
+		this.offreDao = offreDao;
+	}
+
 	@Override
 	public List<Reservation> searchAllResa() {
 
@@ -42,30 +51,51 @@ public class ReservationServiceImpl implements IReservationService {
 	}
 
 	@Override
-	public Reservation addResa(Reservation resa, Client cl) {
+	public Reservation addResa(Reservation resa, Client cl, Offre offre) {
 		resa.setClient(cl);
+		resa.setOffre(offre);
 
 		return resaDao.addResa(resa);
 	}
 
 	@Override
-	public int deleteResa(Reservation resa, Client cl) {
+	public int deleteResa(Reservation resa, Client cl, Offre offre) {
 		resa.setClient(cl);
+		resa.setOffre(offre);
 
-		List <Accompagnant> listeAccomp=accompService.searchAccompByIdResa(resa);
-		
-		for (Accompagnant accomp:listeAccomp) {
+		List<Accompagnant> listeAccomp = accompService.searchAccompByIdResa(resa);
+
+		for (Accompagnant accomp : listeAccomp) {
 			accompService.deleteAccomp(accomp, resa);
 		}
-		
+
 		return resaDao.deleteResa(resa);
 	}
 
 	@Override
-	public int updateResa(Reservation resa, Client cl) {
+	public int updateResa(Reservation resa, Client cl, Offre offre) {
 		resa.setClient(cl);
+		resa.setOffre(offre);
 
 		return resaDao.updateResa(resa);
+	}
+
+	public int verifNbrePlaceDispo(Reservation resa, Offre offre) {
+
+		Offre offreOut=offreDao.searchOffreById(offre);
+		
+		System.out.println(offreOut);
+		
+		if (resa.getNbrePlace() <= offreOut.getNbDispo()) {
+
+			offreOut.setNbDispo(offreOut.getNbDispo()-resa.getNbrePlace());
+			
+			offreDao.updateOffre(offreOut);
+			
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }

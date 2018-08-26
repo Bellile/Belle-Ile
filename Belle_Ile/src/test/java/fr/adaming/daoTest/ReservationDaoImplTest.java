@@ -17,7 +17,6 @@ import fr.adaming.model.Accompagnant;
 import fr.adaming.model.Client;
 import fr.adaming.model.Reservation;
 import fr.adaming.service.IAccompagnantService;
-import fr.adaming.serviceTest.Ign;
 
 //permet de lance
 @RunWith(SpringJUnit4ClassRunner.class)
