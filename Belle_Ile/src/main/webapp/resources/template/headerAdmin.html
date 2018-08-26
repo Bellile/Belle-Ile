@@ -83,13 +83,8 @@
 
 					</ul></li>
 
-				<li role=presentation class=pull-right><a href=pageAccueil.jsp
-					style="color: red;">Déconnection</a></li>
-
-				<li class=pull-right><a
-					style="color: #000000; font-style: italic;">Conseiller :
-						${conseilSession.id_conseiller} -- ${conseilSession.nom}
-						${conseilSession.prenom }</a></li>
+				<li role=presentation><a href="${pageContext.request.contextPath }/j_spring_security_logout"
+					class="header">Deconnection</a></li>
 			</ul>
 
 		</nav>
