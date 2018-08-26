@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IOffreDao;
 import fr.adaming.model.Hotel;
-import fr.adaming.model.LocationVoiture;
 import fr.adaming.model.Offre;
 import fr.adaming.model.Vol;
 
@@ -34,7 +33,6 @@ public class OffreServiceImpl implements IOffreService {
 	@Override
 	public Offre addOffre(Offre offre) {
 
-	
 		return offreDao.addOffre(offre);
 	}
 
@@ -45,7 +43,7 @@ public class OffreServiceImpl implements IOffreService {
 	}
 
 	@Override
-	public int updateOffre(Offre offre, Hotel hotel, LocationVoiture location, Vol vol) {
+	public int updateOffre(Offre offre, Hotel hotel, Vol vol) {
 		Offre offreOut = this.searchOffreById(offre);
 
 		offreOut.setNbNuit(offre.getNbNuit());
@@ -65,10 +63,6 @@ public class OffreServiceImpl implements IOffreService {
 
 		if (offre.getHotel() != null) {
 			offreOut.setHotel(offre.getHotel());
-		}
-
-		if (offre.getLocation() != null) {
-			offreOut.setLocation(offre.getLocation());
 		}
 
 		return offreDao.updateOffre(offreOut);

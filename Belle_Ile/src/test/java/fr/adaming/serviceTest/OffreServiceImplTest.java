@@ -90,10 +90,9 @@ public class OffreServiceImplTest {
 		offreOut.setNbDispo(20);
 		
 		Hotel hotel=new Hotel();
-		LocationVoiture location=new LocationVoiture();
 		Vol vol=new Vol();
 		
-		offreService.updateOffre(offreOut, hotel, location, vol);
+		offreService.updateOffre(offreOut, hotel,  vol);
 		
 		assertEquals (20, offreService.searchOffreById(offreIn).getNbDispo());
 		

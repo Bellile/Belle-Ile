@@ -28,7 +28,7 @@ public class LocationVoiture implements Serializable {
 	private byte[] photo;
 	
 	@OneToOne(mappedBy="location")
-	private Offre offre;
+	private Reservation resa;
 
 	// Constructeur
 	public LocationVoiture() {
@@ -93,13 +93,14 @@ public class LocationVoiture implements Serializable {
 		this.photo = photo;
 	}
 
-	public Offre getOffre() {
-		return offre;
+	public Reservation getResa() {
+		return resa;
 	}
 
-	public void setOffre(Offre offre) {
-		this.offre = offre;
+	public void setResa(Reservation resa) {
+		this.resa = resa;
 	}
+
 
 	
 }
