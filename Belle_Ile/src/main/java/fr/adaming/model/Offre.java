@@ -141,4 +141,12 @@ public class Offre implements Serializable {
 	public void setListResa(List<Reservation> listResa) {
 		this.listResa = listResa;
 	}
+
+	@Override
+	public String toString() {
+		return "Offre [id_offre=" + id_offre + ", nbNuit=" + nbNuit + ", prix=" + prix + ", nbDispo=" + nbDispo
+				+ ", promo=" + promo + "]";
+	}
+	
+	
 }

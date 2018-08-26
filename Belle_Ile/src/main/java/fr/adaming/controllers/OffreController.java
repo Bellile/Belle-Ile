@@ -2,6 +2,7 @@ package fr.adaming.controllers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.fileupload.FileUpload;
@@ -74,7 +75,7 @@ public class OffreController {
 	}
 
 	@RequestMapping(value = "/addOffre", method = RequestMethod.POST)
-	public String ajoutOffre(@ModelAttribute("offreAjout") Offre offre, RedirectAttributes rda, MultipartFile file)
+	public String ajoutOffre(@ModelAttribute("offreAjout") Offre offre, Model model, MultipartFile file)
 			throws IOException {
 
 		if (file != null) {
@@ -84,14 +85,22 @@ public class OffreController {
 
 		try {
 			Offre offreOut = offreService.addOffre(offre);
+
 			if (offreOut.getId_offre() != 0) {
-				return "redirect:listeOffre";
+								
+				model.addAttribute("idOffre", offreOut.getId_offre());
+				
+				return "redirect:/admin/vol/showAddVol";
+
 			} else {
-				rda.addAttribute("msg", true);
+
+			
 				return "redirect:showAddOffre";
 			}
+
 		} catch (Exception e) {
-			rda.addAttribute("msg2", true);
+
+			
 			return "redirect:showAddOffre";
 		}
 
