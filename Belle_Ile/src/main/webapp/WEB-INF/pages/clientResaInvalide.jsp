@@ -18,6 +18,8 @@
 </head>
 <body>
 
+<%@ include file="../../resources/template/header.html"%>
+
 Nous sommes désolés, le voyage que vous souhaitez faire est complet (pour le nombre de réservation demandé.
 <br/>
 <a href="<c:url value="/resa/listeOffreEnCours"/>">Effectuer une nouvelle réservation</a>

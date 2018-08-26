@@ -22,6 +22,9 @@
 <title>Liste des offres</title>
 </head>
 <body>
+
+<%@ include file="../../resources/template/header.html"%>
+
 	<div class="row">
 		<c:forEach var="o" items="${listeOffre}">
 			<div class="col-md-4">

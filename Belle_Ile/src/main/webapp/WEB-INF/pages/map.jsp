@@ -33,6 +33,8 @@
 <title>MAP</title>
 </head>
 <body>
+<%@ include file="../../resources/template/header.html"%>
+
 	<h2>Nos destinations</h2>
 	
 	<div id="map" class="map"></div>

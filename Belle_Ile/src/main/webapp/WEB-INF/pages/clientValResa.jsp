@@ -18,6 +18,8 @@
 </head>
 <body>
 
+<%@ include file="../../resources/template/header.html"%>
+
  <div>${resaCl.prixTotal}</div>
 
 

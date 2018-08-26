@@ -19,6 +19,8 @@
 </head>
 <body>
 
+<%@ include file="../../resources/template/header.html"%>
+
 	<img
 		src="${pageContext.request.contextPath}/image/offre?pId=${offreOut.id_offre}"
 		height="200px">

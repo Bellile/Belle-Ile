@@ -18,6 +18,8 @@
 </head>
 <body>
 
+<%@ include file="../../resources/template/header.html"%>
+
 <h1>Liste des offres de voyages</h1>
 		
 		<c:if test="${not empty msg}">

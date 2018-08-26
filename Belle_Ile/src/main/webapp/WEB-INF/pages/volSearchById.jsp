@@ -18,6 +18,9 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
+
+<%@ include file="../../resources/template/header.html"%>
+
 <%@ include file="../../resources/template/headerAdmin.html"%>
 	<div class="form-group" style="display: none">
 		<label class="col-sm-2 control-label">Référence du voyage</label>

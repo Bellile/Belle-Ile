@@ -21,6 +21,8 @@
 </head>
 <body>
 
+<%@ include file="../../resources/template/header.html"%>
+
 	<form:form cssClass="form-horizontal" method="POST" action="updateCL"
 		modelAttribute="clModif" enctype="multipart/form-data">
 

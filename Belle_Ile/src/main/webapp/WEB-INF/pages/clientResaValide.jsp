@@ -18,6 +18,9 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 </head>
 <body>
+
+<%@ include file="../../resources/template/header.html"%>
+
 	Merci pour votre réservation.
 	<br /> Nous vous souhaitons un agréable voyage.
 	<br /> Retour vers la liste des offres en cours :
