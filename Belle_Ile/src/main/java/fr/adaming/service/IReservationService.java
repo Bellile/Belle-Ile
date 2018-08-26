@@ -19,4 +19,6 @@ public interface IReservationService {
 	public int updateResa(Reservation resa, Client cl, Offre offre);
 	
 	public int verifNbrePlaceDispo(Reservation resa, Offre offre);
+	
+	public int retirerPlaceDispoOffre(Reservation resa, Offre offre);
 }

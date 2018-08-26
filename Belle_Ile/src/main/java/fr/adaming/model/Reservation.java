@@ -46,6 +46,8 @@ public class Reservation implements Serializable {
 	@Column(name = "id_resa")
 	private int id_resa;
 	private int nbrePlace;
+	
+	private double prixTotal;
 
 	// constructeur
 	public Reservation() {
@@ -113,4 +115,18 @@ public class Reservation implements Serializable {
 		this.location = location;
 	}
 
+	public double getPrixTotal() {
+		return prixTotal;
+	}
+
+	public void setPrixTotal(double prixTotal) {
+		this.prixTotal = prixTotal;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [id_resa=" + id_resa + ", nbrePlace=" + nbrePlace + ", prixTotal=" + prixTotal + "]";
+	}
+
+	
 }

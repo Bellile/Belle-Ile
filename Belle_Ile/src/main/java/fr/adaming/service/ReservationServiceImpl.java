@@ -54,6 +54,8 @@ public class ReservationServiceImpl implements IReservationService {
 	public Reservation addResa(Reservation resa, Client cl, Offre offre) {
 		resa.setClient(cl);
 		resa.setOffre(offre);
+		
+		this.retirerPlaceDispoOffre(resa, offre);
 
 		return resaDao.addResa(resa);
 	}
@@ -84,18 +86,24 @@ public class ReservationServiceImpl implements IReservationService {
 
 		Offre offreOut=offreDao.searchOffreById(offre);
 		
-		System.out.println(offreOut);
-		
 		if (resa.getNbrePlace() <= offreOut.getNbDispo()) {
 
-			offreOut.setNbDispo(offreOut.getNbDispo()-resa.getNbrePlace());
-			
-			offreDao.updateOffre(offreOut);
+
 			
 			return 1;
 		} else {
 			return 0;
 		}
+	}
+
+	@Override
+	public int retirerPlaceDispoOffre(Reservation resa, Offre offre) {
+		Offre offreOut=offreDao.searchOffreById(offre);
+		
+		offreOut.setNbDispo(offreOut.getNbDispo()-resa.getNbrePlace());
+		
+		offreDao.updateOffre(offreOut);
+		return 1;
 	}
 
 }

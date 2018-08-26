@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,6 @@ import fr.adaming.model.Reservation;
 import fr.adaming.model.Vol;
 import fr.adaming.service.ILocationVoitureService;
 import fr.adaming.service.IOffreService;
-import fr.adaming.service.IRechercheService;
 import fr.adaming.service.IReservationService;
 
 @Controller
@@ -49,6 +50,13 @@ public class ReservationController {
 		this.locationService = locationService;
 	}
 
+	private Reservation resaValidation;
+	
+	@PostConstruct
+	public void init () {
+		this.resaValidation=new Reservation();
+	}
+
 	@RequestMapping(value = "/listeOffreEnCours", method = RequestMethod.GET)
 	public ModelAndView afficheListeOffreEnCours() {
 		Date date = new Date();
@@ -59,7 +67,6 @@ public class ReservationController {
 		List<Offre> listeOffreEnCours = new ArrayList<Offre>();
 
 		for (Offre o : listeOffre) {
-			System.out.println(o);
 			if (o.getVol().getdDepart().after(date) && o.getNbDispo() > 0) {
 				listeOffreEnCours.add(o);
 			}
@@ -83,16 +90,16 @@ public class ReservationController {
 
 		// Client a récupérer dans la session
 		cl.setId(1);
-		
+
 		Reservation resaCl = new Reservation();
 		resaCl.setClient(cl);
 		resaCl.setOffre(offreOut);
 
 		model.addAttribute("resaCl", resaCl);
 		model.addAttribute("offreOut", offreOut);
-		
-		//pour afficher la liste des locations possible
-		List<LocationVoiture> listeLoc=locationService.searchAllLC();
+
+		// pour afficher la liste des locations possible
+		List<LocationVoiture> listeLoc = locationService.searchAllLC();
 		model.addAttribute("listeLoc", listeLoc);
 
 		return "clientResa";
@@ -112,10 +119,78 @@ public class ReservationController {
 		int verif = resaService.verifNbrePlaceDispo(resaCl, offre);
 
 		if (verif == 1) {
-			resaService.addResa(resaCl, cl, offre);
-			return "clientResaValide";
+
+			if (resaCl.getLocation() != null) {
+				System.out.println(resaCl.getLocation());
+				this.resaValidation.setLocation(resaCl.getLocation());
+				this.resaValidation.setOffre(offre);
+			}
+			this.resaValidation.setNbrePlace(resaCl.getNbrePlace());
+
+
+
+			return "redirect:showValResa";
 		} else {
 			return "clientResaInvalide";
 		}
+	}
+
+	@RequestMapping(value = "/client/showValResa", method = RequestMethod.GET)
+	public String afficheValResa(Model model) {
+
+		// Client à récupérer dans la session
+		Client cl = new Client();
+		cl.setId(1);
+
+		
+		System.out.println(this.resaValidation);
+		
+		
+		Offre offreIn = offreService.searchOffreById(this.resaValidation.getOffre());
+		
+		System.out.println(offreIn);
+	
+		this.resaValidation.setPrixTotal(offreIn.getPrix() * this.resaValidation.getNbrePlace());
+
+		
+		this.resaValidation.setLocation(locationService.searchById(this.resaValidation.getLocation()));
+		
+				
+		if (this.resaValidation.getLocation() != null) {
+			this.resaValidation.setPrixTotal(this.resaValidation.getPrixTotal()
+					+ (offreIn.getNbNuit() * this.resaValidation.getLocation().getPrixJournee()));
+		}
+
+		model.addAttribute("resaCl", this.resaValidation);
+		return "clientValResa";
+	}
+
+	@RequestMapping(value = "/client/valResa", method = RequestMethod.GET)
+	public String valResa(Model model) {
+
+		// Client à récupérer dans la session
+		Client cl = new Client();
+		cl.setId(1);
+
+		Offre offreIn = new Offre();
+		offreIn.setId_offre(this.resaValidation.getOffre().getId_offre());
+
+		Reservation resaOut = resaService.addResa(this.resaValidation, cl, offreIn);
+
+		if (resaOut != null) {
+			return "clientResaValide";
+		} else {
+			return "erreur";
+		}
+
+	}
+	
+	@RequestMapping("/client/annuleResa")
+	public String annuleResa () {
+		
+		this.resaValidation=null;
+		
+		return "redirect:../listeOffreEnCours";
+		
 	}
 }
