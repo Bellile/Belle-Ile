@@ -25,7 +25,7 @@
 	href="${pageContext.request.contextPath}/resources/monCSS.css" />
 <style>
 .map {
-	height: 580px;
+	height: 480px;
 	width: 100%;
 }
 </style>
@@ -45,13 +45,13 @@
 				source : new ol.source.OSM()
 			}) ],
 			view : new ol.View({
-				center : ol.proj.fromLonLat([ -21.093926, 55.506681 ]),
-				zoom : 4
+				center : ol.proj.fromLonLat([ 55.579705921163, -21.291119716615]),
+				zoom : 3
 			})
 		});
 		var marker = new ol.Feature({
 			geometry: new ol.geom.Point(
-			ol.proj.fromLonLat([ -20.272910, 57.580369 ])),// Cordinates of New York's Town Hall
+			ol.proj.fromLonLat([ 55.579705921163, -21.291119716615 ])),// Cordinates of New York's Town Hall
 		});
 			
 		var vectorSource = new ol.source.Vector({
@@ -66,7 +66,7 @@
 		//Points
 		var marker = new ol.Feature({
 			geometry: new ol.geom.Point(
-			ol.proj.fromLonLat([ -21.093926, 55.506681 ])),// Cordinates of New York's Town Hall
+			ol.proj.fromLonLat([ 46.329345703125, -9.42626953125 ])),// Cordinates of New York's Town Hall
 		});
 			
 		var vectorSource = new ol.source.Vector({
@@ -81,37 +81,7 @@
 		//Points
 		var marker = new ol.Feature({
 			geometry: new ol.geom.Point(
-			ol.proj.fromLonLat([ -4.631168, 55.500468 ])),// Cordinates of New York's Town Hall
-		});
-			
-		var vectorSource = new ol.source.Vector({
-			features: [marker]
-		});
-	
-		var markerVectorLayer = new ol.layer.Vector({
-			source: vectorSource,
-		});
-		map.addLayer(markerVectorLayer);
-		
-		//Points
-		var marker = new ol.Feature({
-			geometry: new ol.geom.Point(
-			ol.proj.fromLonLat([ 21.491929, -157.957798 ])),// Cordinates of New York's Town Hall
-		});
-			
-		var vectorSource = new ol.source.Vector({
-			features: [marker]
-		});
-	
-		var markerVectorLayer = new ol.layer.Vector({
-			source: vectorSource,
-		});
-		map.addLayer(markerVectorLayer);
-		
-		//Points
-		var marker = new ol.Feature({
-			geometry: new ol.geom.Point(
-			ol.proj.fromLonLat([-41.346765, 173.614810 ])),// Cordinates of New York's Town Hall
+			ol.proj.fromLonLat([ -150.55064251108, -17.018832165335  ])),// Cordinates of New York's Town Hall
 		});
 			
 		var vectorSource = new ol.source.Vector({
