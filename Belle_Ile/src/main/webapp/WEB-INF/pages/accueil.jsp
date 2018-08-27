@@ -58,14 +58,14 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active"
-					style="max-height: 500px; min-height: 500px"></div>
+					style="max-height: 500px; min-height: 500px; text-align: center; font-size: 60px">Bienvenue chez Belle Ile Voyage</div>
 
 				<c:forEach var="h" items="${listeHotel}">
 					<div class="item"
 						style="max-height: 500px; min-height: 500px; padding-left: 40%; padding-right: 40%">
 						<img
 							src="${pageContext.request.contextPath}/image/hotel?pId=${h.id_hotel}"
-							style="max-height: 400px; padding-top: 150px">
+							style="max-height: 800px; padding-top: 150px">
 						<h3>"${h.nom}"</h3>
 					</div>
 				</c:forEach>
@@ -110,8 +110,8 @@
 						<label>Nombre de nuit(s) : ${o.nbNuit}</label>
 						</div>
 						<label>Prix initial du séjour : ${o.prix} euros</label>
-						<label style="border: 1px solid grey">PROMO : ${o.promo*100} %</label>
-						<label>Prix après réduction : ${o.prix - o.prix*o.promo} euros</label>
+						<label style="border: 1px solid grey; color: red">PROMO : ${o.promo*100} %</label>
+						<label style="color: red">Prix après réduction : ${o.prix - o.prix*o.promo} euros</label>
 						<label>Depart : de ${o.vol.depart} le <a href="<c:url value="/accueil/searchVolLink?pId=${o.vol.id_vol}"/>">${o.vol.dDepart}</a></label>
 					</div>
 				</div>

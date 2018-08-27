@@ -197,6 +197,9 @@ public class OffreController {
 		Offre offreOut = offreService.searchOffreById(offreIn);
 
 		modele.addAttribute("offreUpdate", offreOut);
+		
+		List<Hotel> listeHotel=hotelService.searchAllHotel();
+		modele.addAttribute("listeHotel", listeHotel);
 		return "adminOffreUpdate";
 	}
 

@@ -33,12 +33,15 @@
 			</div>
 		</div>
 
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="hotel.id_hotel">Destination - Hotel</form:label>
-			<div class="col-sm-10">
-				<form:input cssClass="form-control" placeholder="Hotel"
-					path="hotel.id_hotel" />
-			</div>
+	<div class="col-sm-2 ">
+		<form:label cssClass="col-sm-2 control-label" path="hotel.id_hotel">Hotel</form:label>
+			<form:select cssClass="col-sm-offset-4 form-control" path="hotel.id_hotel">
+				
+				<c:forEach var="h" items="${listeHotel}">
+					<option value="${h.id_hotel}">${h.nom} -
+						${h.adresse.pays}</option>
+				</c:forEach>
+			</form:select>
 		</div>
 
 		<div class="form-group">
