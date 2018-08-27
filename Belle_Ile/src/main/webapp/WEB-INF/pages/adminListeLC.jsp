@@ -23,14 +23,14 @@
 <%@ include file="../../resources/template/headerAdmin.html"%>
 	<table class="table">
 		<tr>
-			<th>Durée</th>
+		
 			<th>photo</th>
 			<th>prix pour la journée</th>
 			<th>Type de la voiture</th>
 		</tr>
 		<c:forEach var="lc" items="${listeLC}">
 			<tr>
-				<td>${lc.duree }</td>	
+				
 				<td><img src="${pageContext.request.contextPath}/image/locationVoiture?pId=${lc.id_location}" style ="max-height: 100px; max-height:100px"/></td>			
 				<td>${lc.prixJournee }</td>
 				<td>${lc.typeVoiture }</td>

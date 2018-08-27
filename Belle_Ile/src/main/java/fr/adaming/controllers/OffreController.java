@@ -26,6 +26,7 @@ import fr.adaming.model.Hotel;
 import fr.adaming.model.LocationVoiture;
 import fr.adaming.model.Offre;
 import fr.adaming.model.Vol;
+import fr.adaming.service.IHotelService;
 import fr.adaming.service.IOffreService;
 
 @Controller
@@ -50,6 +51,10 @@ public class OffreController {
 		this.offreService = offreService;
 	}
 
+	@Autowired
+	private IHotelService hotelService;
+	
+	
 	public OffreController() {
 		super();
 	}
@@ -89,6 +94,9 @@ public class OffreController {
 			model.addAttribute("msg2", msg2);
 		}
 		model.addAttribute("offreAjout", new Offre());
+		
+		List<Hotel> listeHotel=hotelService.searchAllHotel();
+		model.addAttribute("listeHotel", listeHotel);
 
 		return "adminOffreAjout";
 	}
